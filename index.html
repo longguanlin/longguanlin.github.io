@@ -152,6 +152,163 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/13/linux%E5%9F%BA%E7%A1%80/">linux基础</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/13/linux%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-06-13T06:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="linux基础-bash说明"><a href="#linux基础-bash说明" class="headerlink" title="linux基础-bash说明"></a>linux基础-bash说明</h2><p><strong>.bash_profile</strong> :用户登录时加载一次。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!<br>.<strong>bashrc</strong> ：用户bash环境变量，可通过source重新加载.每次打开新的shell时,该文件被读取.<br><strong>/etc/profile</strong>:系统环境变量，每个用户登录都加载一次.并从/etc/profile.d目录的配置文件中搜集shell的设置<br><strong>/etc/bashrc</strong>:为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取<br><strong>~/.bash_logout</strong>:当每次退出系统(退出bash shell)时,执行该文件</p>
+<h2 id="linux基础–内核"><a href="#linux基础–内核" class="headerlink" title="linux基础–内核"></a>linux基础–内核</h2><p>Linux内核:内核是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序。它从用户那里接受命令并把命令送给内核去执行。<br>        arch：包含了与体系结构相关的代码,对应于每一个支持的体系结构，有一个相应的子目录如i386、arm、alpha等。<br>     其每个体系结构子目录下包含几个主要的子目录：<br>　　 kernel：包含与体系结构相关的内核代码<br>　　 mm： 包含与体系结构相关的内存管理代码<br>　　 lib： 包含与体系结构相关的库代码<br>　　 documentation：包含内核的文档<br>　　 drivers：包含设备驱动代码。每类设备有相应的子目录，如char 、block、net等<br>　　 fs：包含文件系统的代码。每个支持的文件系统有相应的子目录，如 ext2、proc等<br>　　 include：内核头文件，对每一种体系结构，分别有相应的子目录。<br>　　 init：包含内核初始化代码<br>　　 lib：包含内核的库代码<br>　　 net：包含网络部分的代码</p>
+<p>uname –a<br>Centos 6.x  2.6<br>Centos 7.x  3.10<br>更新内核:  yum -y update<br>内核目录：/usr/src/kernels/</p>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p><img src="%5Cassets%5Clinux%5C%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="image-20200613153558846" title="文件目录结构"></p>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>linux分区不同于windows，<br>linux下硬盘设备名为（IDE硬盘为hdx（x为从a—d）因为IDE硬盘最多四个<br>SCSI，SATA，USB硬盘为sdx（x为a—z）），<br>硬盘主分区最多为4个，所以主分区从sdb1开始到sdb4，逻辑分区从sdb5开始，（逻辑分区永远从sdb5开始…）<br>设备名可以使用fdisk –l查看</p>
+<h3 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h3><p>挂载的主要目录<br>/——-根目录，唯一必须挂载的目录。（在绝大多数情况下 有2G的容量应该是够用了。当然了，很多东西都是多多益善的）swap—-交换分区，可能不是必须的。它的容量 只要约等于您的物理内存就可以了。swap是当物理内存不够用的时候，把数据放到swap中，所以swap起到了一个虚拟内存的作用，在某种意义上来说也算是加大了内存空间。</p>
+<p>/home—这是您的工作目录，通常您自己创建的文件，都保存在这里，您最好给它分配一个分区。</p>
+<p>/usr—-应用程序目录。大部分的软件都安装在这里，如果您计划安装许多软件，建议也给它分配一个分区/var—-如果您要作一些服务器方面的应用，可以考虑给它分配一个较大的分区。/boot—如果您的硬盘不支持LBA模式（不太可能），您最好挂载它，如果挂载，将它挂载在硬盘的第一个 分区，应该比较稳妥。一般来说，挂载的分区只要100M大小就足够</p>
+<h3 id="文件后缀名"><a href="#文件后缀名" class="headerlink" title="文件后缀名"></a>文件后缀名</h3><p>.bz2 ——bzip2的压缩文件    .gz ——gzip的压缩文件   .tar ——tar打包文件（是包文件不是压缩文件）<br>     .tbz——tar打包并用bzip压缩文件     .tgz—–tar打包并用gzip压缩的文件     .au —–audio文件<br>     .gif —–gif图象文件     .html/.htm—–HTML文件   .jpg—–JPEG图象文件   .pdf——电子文档（PDF格式的）<br>     .png—–PNG图象文件      .ps——postscinpt文件（打印格式文件）         .txt——纯文本文件<br>     .wav—–audio文件        .xpm—–图象文件        .conf——-配置文件<br>     .lock——-LOCK文件（用来判断一个文件或设备是否被使用）  .rpm—— REDHATPackage.Manager文件（套件包或软件包）<br>     .c ——-C源程序代码文件      .cpp——C++源程序代码文件      .h ——-C或C++程序的头文件<br>     .o——程序目标文件      .pl——perl脚本文件     .so—–类库文件    .a–.lib</p>
+<p><img src="C:%5CUsers%5C%E9%BE%99%E8%A7%82%E6%9E%97%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613160757317.png" alt="image-20200613160757317" title="文件权限"></p>
+<p><strong><em>chmod</em></strong>：（rws 432）给文件加权限 chmod +x 123.txt chmod -x 123.txt,使用数字化修改文件权限chmod 744 123.txt </p>
+<p><strong><em>1. type</em></strong>：查询命令 是否属于shell解释器</p>
+<p><strong><em>2. help ：</em></strong> 帮助命令****</p>
+<p><strong><em>3. man ：</em></strong> 为所有用户提供在线帮助</p>
+<p><strong><em>4. ls</em></strong> ： 列表显示目录内的文件及目录-l 以长格式显示文件和目录的列表-a 显示所有子目录和文件的信息-A 与-a基本类似，但有两个特殊的隐藏目录‘.’和’..’不显示-d 显示目录本身的属性，长与-l同时使用-h 以更人性化的方式显示目录或文件的大小，长与-l同时使用-R 以递归的方式显示目录及其子目录中的所有内容</p>
+<p><strong><em>5. du ：</em></strong>用于统计制定目录和文件所占用磁盘空间的大小-a 统计磁盘空间占用是所有的文件，而不仅仅是统计目录-s 只统计所占用空间的大小</p>
+<p><strong><em>6. touch：</em></strong> 创建空文件，用于测试</p>
+<p><strong><em>7. mkdir ：</em></strong> 创建目录-p 一次性创建嵌套的多层目录-v 显示详情-m 跳出当前的umask</p>
+<p><strong><em>8. cp：</em></strong> 复制文件或目录-f 覆盖同名文件或目录，强制复制-i 提醒用户确认-r 递归复制</p>
+<p><strong><em>\</em>9. rm ：**</strong>删除指定的文件或目录-f 不提示，直接强制删除-i 提示用户确认-r 递归式删除整个目录树</p>
+<p><strong><em>\</em>10. mv ：**</strong>将制定文件或目录转移位置（剪切），如果目标位置与原位置相同，则相当于执行重命名操作</p>
+<p><strong><em>\</em>11. which ：**</strong> 查找Linux命令程序所在的位置</p>
+<p><strong><em>\</em>12. find ：**</strong> 精细查找文件或目录-name 按名称查找 eg: find /etc -name “resol*.conf”-size 按大小查找 eg: find /etc -size +1M(k,M,G)-user 按属性查找 eg: find /etc -user root-type 按类型查找 eg: find /boot -type d (d 目录； f 普通文件 ； b 块设备 ； c 字符设备文件)-a (and) 逻辑 ‘与’ 运算-o (or) 逻辑‘或’ 运算</p>
+<p><strong><em>\</em>13. pwd ：**</strong>查看当前路径</p>
+<p><strong><em>\</em>14. stat ：**</strong> 查看文件详细状态信息</p>
+<p>===========================================</p>
+<p><strong><em>\</em>15. cat**</strong> ： 查看文件内容，可同时显示多个文件的内容（正序显示）</p>
+<p><strong><em>\</em>16. tac**</strong> : (倒序显示)</p>
+<p><strong><em>\</em>17. nl**</strong> ：不显示行号-n 显示内容的同时显示行号-A 显示所有的字符（通常Windows系统拷贝过来的文件无法直接cat到，需要加此选项）【root@www<del>】# cat -n /etc/yum.conf【root@www</del>】# cat -nA /etc/yum.conf【root@www~】# cat -nl /etc/yum.conf</p>
+<p><strong><em>\</em>18. more**</strong>:全屏方式分页显示文件内容a.按enter 向下滚动一行b.按空格键向下滚动一页c.按q键退出【root@www~】#more /etc/passwd</p>
+<p><strong><em>\</em>19 。 less**</strong>： 与more基本相同，但拓展功能更多</p>
+<p><strong><em>\</em>20. head:**</strong>查看文件开头的一部分内容，默认显示10行，可加选项调节【root@www~】#head -5 /etc/passwd （显示pass文档文件 的前五行）</p>
+<p><strong><em>\</em>21. tail**</strong> ：查看文件结尾的一部分内容</p>
+<p><strong><em>\</em>22. wc:**</strong>统计文件中的单词数量-l 统计行数-w:统计单词个数-c:统计字节数【root@www~】#wc /etc/hosts2 10 158 /etc/hosts (行数，单词数，字节数）</p>
+<p><strong><em>\</em>23. grep :**</strong>在文件中查找并显示包含指定字符串的行-i : 查找时忽略大小写-v:反转查找，输出与条件不符的行 “^…”表示以…开头 “…$”表示以…结尾 “^$”表示空行eg：【root@www~】#grep -v “^#” /etc/yum.conf | grep -v “^$” （ 过滤掉以“#”开头的注释行及空行）<strong><em>\</em>24. egrep**</strong>:增强型过滤 （等同于 grep -E ）</p>
+<p><strong><em>\</em>25. gzip:**</strong>压缩 （压缩后文件格式为 “.gz”）<strong><em>\</em>26. gzip -d :**</strong>解压缩格式为.gz 的压缩文件</p>
+<p><strong><em>\</em>27. bzip2:**</strong> 压缩 （压缩后文件格式为 “.bz2”）<strong><em>\</em>28. bzip2 -d**</strong> :解压缩格式为 .bz2 的压缩文件</p>
+<p><strong><em>\</em>29. tar :**</strong>制作归档文件，释放归档文件 tar [选项c…] 归档文件名 源文件或目录 tar 【选项 x…】 归档文件名 【-C 目标目录】-c 创建.tar 格式的包文件-x 解开.tar 格式的包文件-v 输出详细信息-f 表示使用归档文件 （后面需紧跟归档文件名）-t 列表查看包内的文件-C 解包时指定释放的目标目录-z 调用 gzip 程序进行压缩或解压-j 调用bzip2 程序进行压缩或解压</p>
+<p>eg： tar zcvf aaa.tar.gz /aaa/eg: tar zcf /opt/home.tar.gz /home/eg: tar cjvf aaa.tar.bz2 /aaa/tar xf aaa.tar.bz2 -C /root/</p>
+<p><strong><em>\</em>30. vi :**</strong> 文本编辑器<strong><em>\</em>31. vim ：**</strong>vi编辑器的增强版</p>
+<p>模式切换: a 在光标后插入内容A 在光标所在的行末尾插入内容i 从当前光标前插入内容l 在光标所在行行首插入内容o 在当前光标下插入空行O 在当前光标上插入空行</p>
+<p><strong><em>\</em>32. rpm**</strong> 查询已安装的RPM软件信息 （1）格式： rpm -q 【子选项】 【软件名】-qa : 查看已安装的所有 RPM 软件列表-qi : 查看指定软件的详细信息-ql :查询软件包的目录，文件列表eg：【root@www<del>】#rpm -q bashbash-4.1.2-15.el6_4.x86_64【root@www</del>】#rpm -qa | grep bashbash-4.1.2-15.el6_4.x86_64查询未安装的RPM包文件rpm -qb [子选项] RPM包文件-qpi :查看该软件的详细信息-qpl : 查看包内所含的目录，文件列表</p>
+<p>安装升级RPM包文件rpm 【选项】 RPM包文件-i: 安装一个新的rpm软件包 （install）-U：升级，若未安装，则进行安装-h: 以“#”号显示安装的进度-v : 显示安装过程中的详细信息-F： 更新某个rpm软件，若未安装，则放弃安装</p>
+<p><strong><em>\</em>33. yum**</strong>安装：yum -y install 软件名卸载：yum -y remove 软件名升级：yum -y update 软件名卸载光盘 ： umount /dev/rs0安装光盘： mount /dev/sr0 /media/ （media 介质）</p>
+<p><strong><em>\</em>34. ./configure**</strong>进入设置模式<strong><em>\</em>35. make**</strong> 编译<strong><em>\</em>36.**</strong> <strong><em>\</em>make install**</strong> 编译安装<strong><em>\</em>37. md5sum**</strong> 检验校验和</p>
+<p>==================================</p>
+<p>重启命令</p>
+<p><strong><em>\</em>38. reboot**</strong></p>
+<p><strong><em>\</em>39. shutdown -r now**</strong></p>
+<p><strong><em>\</em>40. init 6**</strong></p>
+<p>关机命令</p>
+<p><strong><em>\</em>41 . halt -p******</strong></p>
+<p><strong><em>\</em>42 . shutdown -h now**</strong></p>
+<p><strong><em>\</em>43 . init 0**</strong>————————<strong><em>\</em>sync;sync;sync;reboot*****</strong>*sync:数据同步命令， 它会把内存中的数据同步到硬盘中去，防止在瞬时在*<strong>**</strong>*关机或重启时，数据丢失****。</p>
+<p>重启关机命令<strong><em>\</em>reboot*****</strong>*shutdown -r now*<strong>**</strong>*init 6****</p>
+<p><strong><em>\</em>halt -p*****</strong>*shutdown -h now*<strong>**</strong>*init 0****</p>
+<p><strong><em>\</em>44 . sync 同步数据**</strong>======================================</p>
+<p><strong><em>\</em>45 . echo**</strong>回显</p>
+<p><strong><em>\</em>46 . sleep**</strong> 休眠</p>
+<p><strong><em>\</em>47 . useradd**</strong> : 添加用户账号 命令useradd [选项】 用户名-u ：指定uid标记号-d：指定宿主目录，缺省默认为/home/用户名-e:指定账号失效时间-M：不为用户建立初始化宿主目录 （-d 与 -M 不能同时使用）-s：指定用户登录的shell-g:指定用户的基本名-G：指定用户的附加组名-c：添加备注，显示在/etc/passwd第五字段</p>
+<p>eg：[root@www<del>]#groupadd group1[root@www</del>]#mkdir -p /testgroup1[root@www<del>]#groupadd jiaoxue[root@www</del>]#useradd -d /testgroup1/tom/ -g group1 -G jiaoxue -s /bin/bash -e2016-01-01 tom[root@www<del>]#passwd tom………. ………..[root@www</del>]#tail -1 /etc/passwd[root@www~]#tail -1 /etc/shadow</p>
+<p><strong><em>\</em>48 . userdel**</strong> : 删除用户账号命令userdel 用户名-r ： 删除用户的同时删除用户的宿主目录eg： [root@www<del>]#userdel -r tom1[root@www</del>]#ls /testgroup1/</p>
+<p><strong><em>\</em>49 . usermod :**</strong>修改用户属性 命令usermod [选项] … 用户名-l : 更改用户账号的登录名字-c : 修改用户的备注-L : 锁定用户账号-U: 解锁用户账号eg： [root@www<del>]#usermod -l tom1 tom[root@www</del>]#tail -1 /etc/passwdtom1:x:501:501::/testgroup1/tom/:/bin/bash[root@www<del>]#usermod -c jiaoxue tom1[root@www</del>]#tail -1 /etc/passwdtom1:x:501:501:jiaoxue:/testgroup1/tom/:/bin/bash</p>
+<p><strong><em>\</em>50 . groupadd**</strong>: 添加组账号命令注GID：组标识号格式： groupadd [-g GID] 组账号名</p>
+<p><strong><em>\</em>51 . groupdel**</strong>： 删除组账号eg： [root@www<del>]#groupdel market[root@www</del>]#tail -5 /etc/group<strong><em>\</em>52 . groups :**</strong>查询客户所属的组groups 用户名</p>
+<p><strong><em>\</em>53 . passwd**</strong> ： 设置/更改用户口令passwd 【选项】 用户名-d : 清空用户密码-l ： 锁定用户账号-S： 查看用户账号的状态（是否被锁定）-u：解锁用户账号-x， –maximum=DAYS:密码的最长有效时限-n，–miximum=DAYS:密码的最短有效时限-w，–warning=DAYS:在密码过期前多少天开始提醒用户-i, –inactive=DAYS:当密码过期后经过多少天该账号会被禁用</p>
+<p><strong><em>\</em>54 . gpasswd:**</strong>设置组账号密码（极少用），添加，删除组成员 gpasswd [选项] … 组账号名</p>
+<p>选项为空时，表示给群组设置密码，仅 root 用户可用</p>
+<p><strong>-a : 向组内添加一个用户</strong></p>
+<p><strong>-d : 从组内删除一个用户成员-M:定义组成员列表，以逗号分隔</strong></p>
+<p><strong><em>\</em>55 . id**</strong> ： 查询用户身份标识id 【用户名】</p>
+<p><strong><em>\</em>56 . w ：**</strong>查询已登录到主机的用户信息</p>
+<p><strong><em>\</em>57 . who：**</strong>与 w 命令类似，查询已登录到主机的用户</p>
+<p><strong><em>\</em>58 . finger**</strong>： 查询账号的详细信息finger 【用户名】</p>
+<p><strong><em>\</em>59 . whoami**</strong> ： 查询当前登录的账号名</p>
+<p><strong><em>\</em>60 . tree :**</strong> 将所有文件以树的形式列出来</p>
+<p>========================================================</p>
+<p>临时关闭防火墙systemctl stop firewalld永久关闭防火墙systemctl disable firewalld</p>
+<p>临时关闭selinux安全机制setenforce 0永久关闭selinux安全机制sed -i ‘7 s/enforcing/disabled/‘ /etc/selinux/config</p>
+<p>yum -y clean all ,清除缓存时会遇到 /var/run/yum.pid 被锁定↓ ↓ ↓ ↓ ↓ 解决方法：</p>
+<p>通过xshell再复制一个新的终端通道:</p>
+<p>执行以下命令 ：</p>
+<p>&gt; /var/run/yum.pid</p>
+<p>即可解决问题。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/13/linux%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Markdown学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -542,6 +699,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">test</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
