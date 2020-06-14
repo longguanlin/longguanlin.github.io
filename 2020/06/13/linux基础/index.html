@@ -16,7 +16,7 @@
 <meta property="og:description" content="linux基础-bash说明.bash_profile :用户登录时加载一次。每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!.bashrc ：用户bash环境变量，可通过source重新加载.每次打开新的shell时,该文件被读取.&#x2F;etc&#x2F;profile:系统环境变量，每个用户登录都加载一次.并从&#x2F;etc&#x2F;profile.d目录的配置文件中搜集she">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/06/13/linux%E5%9F%BA%E7%A1%80/%5Cassets%5Clinux%5C%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
-<meta property="og:image" content="c:%5CUsers%5C%E9%BE%99%E8%A7%82%E6%9E%97%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613160757317.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/13/linux%E5%9F%BA%E7%A1%80/C:%5CUsers%5C%E9%BE%99%E8%A7%82%E6%9E%97%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613160757317.png">
 <meta property="article:published_time" content="2020-06-13T06:58:45.000Z">
 <meta property="article:modified_time" content="2020-06-13T08:13:25.977Z">
 <meta property="article:author" content="LongGuanLin">
@@ -183,13 +183,13 @@
 
 <h2 id="linux基础–内核"><a href="#linux基础–内核" class="headerlink" title="linux基础–内核"></a>linux基础–内核</h2><p>Linux内核:内核是系统的心脏，是运行程序和管理像磁盘和打印机等硬件设备的核心程序。它从用户那里接受命令并把命令送给内核去执行。<br>        arch：包含了与体系结构相关的代码,对应于每一个支持的体系结构，有一个相应的子目录如i386、arm、alpha等。<br>     其每个体系结构子目录下包含几个主要的子目录：<br>　　 kernel：包含与体系结构相关的内核代码<br>　　 mm： 包含与体系结构相关的内存管理代码<br>　　 lib： 包含与体系结构相关的库代码<br>　　 documentation：包含内核的文档<br>　　 drivers：包含设备驱动代码。每类设备有相应的子目录，如char 、block、net等<br>　　 fs：包含文件系统的代码。每个支持的文件系统有相应的子目录，如 ext2、proc等<br>　　 include：内核头文件，对每一种体系结构，分别有相应的子目录。<br>　　 init：包含内核初始化代码<br>　　 lib：包含内核的库代码<br>　　 net：包含网络部分的代码</p>
 <p>uname –a<br>Centos 6.x  2.6<br>Centos 7.x  3.10<br>更新内核:  yum -y update<br>内核目录：/usr/src/kernels/</p>
-<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p><img src="%5Cassets%5Clinux%5C%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="image-20200613153558846" title="文件目录结构"></p>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p><img src="/2020/06/13/linux%E5%9F%BA%E7%A1%80/%5Cassets%5Clinux%5C%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="image-20200613153558846" title="文件目录结构"></p>
 <h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>linux分区不同于windows，<br>linux下硬盘设备名为（IDE硬盘为hdx（x为从a—d）因为IDE硬盘最多四个<br>SCSI，SATA，USB硬盘为sdx（x为a—z）），<br>硬盘主分区最多为4个，所以主分区从sdb1开始到sdb4，逻辑分区从sdb5开始，（逻辑分区永远从sdb5开始…）<br>设备名可以使用fdisk –l查看</p>
 <h3 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h3><p>挂载的主要目录<br>/——-根目录，唯一必须挂载的目录。（在绝大多数情况下 有2G的容量应该是够用了。当然了，很多东西都是多多益善的）swap—-交换分区，可能不是必须的。它的容量 只要约等于您的物理内存就可以了。swap是当物理内存不够用的时候，把数据放到swap中，所以swap起到了一个虚拟内存的作用，在某种意义上来说也算是加大了内存空间。</p>
 <p>/home—这是您的工作目录，通常您自己创建的文件，都保存在这里，您最好给它分配一个分区。</p>
 <p>/usr—-应用程序目录。大部分的软件都安装在这里，如果您计划安装许多软件，建议也给它分配一个分区/var—-如果您要作一些服务器方面的应用，可以考虑给它分配一个较大的分区。/boot—如果您的硬盘不支持LBA模式（不太可能），您最好挂载它，如果挂载，将它挂载在硬盘的第一个 分区，应该比较稳妥。一般来说，挂载的分区只要100M大小就足够</p>
 <h3 id="文件后缀名"><a href="#文件后缀名" class="headerlink" title="文件后缀名"></a>文件后缀名</h3><p>.bz2 ——bzip2的压缩文件    .gz ——gzip的压缩文件   .tar ——tar打包文件（是包文件不是压缩文件）<br>     .tbz——tar打包并用bzip压缩文件     .tgz—–tar打包并用gzip压缩的文件     .au —–audio文件<br>     .gif —–gif图象文件     .html/.htm—–HTML文件   .jpg—–JPEG图象文件   .pdf——电子文档（PDF格式的）<br>     .png—–PNG图象文件      .ps——postscinpt文件（打印格式文件）         .txt——纯文本文件<br>     .wav—–audio文件        .xpm—–图象文件        .conf——-配置文件<br>     .lock——-LOCK文件（用来判断一个文件或设备是否被使用）  .rpm—— REDHATPackage.Manager文件（套件包或软件包）<br>     .c ——-C源程序代码文件      .cpp——C++源程序代码文件      .h ——-C或C++程序的头文件<br>     .o——程序目标文件      .pl——perl脚本文件     .so—–类库文件    .a–.lib</p>
-<p><img src="C:%5CUsers%5C%E9%BE%99%E8%A7%82%E6%9E%97%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613160757317.png" alt="image-20200613160757317" title="文件权限"></p>
+<p><img src="/2020/06/13/linux%E5%9F%BA%E7%A1%80/C:%5CUsers%5C%E9%BE%99%E8%A7%82%E6%9E%97%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200613160757317.png" alt="image-20200613160757317" title="文件权限"></p>
 <p><strong><em>chmod</em></strong>：（rws 432）给文件加权限 chmod +x 123.txt chmod -x 123.txt,使用数字化修改文件权限chmod 744 123.txt </p>
 <p><strong><em>1. type</em></strong>：查询命令 是否属于shell解释器</p>
 <p><strong><em>2. help ：</em></strong> 帮助命令****</p>

@@ -15,15 +15,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Dubbox简介​        Dubbox 是一个分布式服务框架，其前身是阿里巴巴开源项目Dubbo ，被国内电商及互联网项目中使用，后期阿里巴巴停止了该项目的维护，当当网便在Dubbo基础上进行优化，并继续维护，为了与原有的Dubbo区分，故将其命名为Dubbox。 ​        Dubbox 致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务治理方案。简单的说，dubbo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/dubbox/....%5Cpublic%5Cassets%5Cdubbox%5Cdubbox.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/dubbox/....%5Cpublic%5Cassets%5Cdubbox%5Czookeeper1.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/dubbox/....%5Cpublic%5Cassets%5Cdubbox%5Cdubbo-admin.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Cdubbox.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Czookeeper.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Cdubbo-admin.png">
 <meta property="article:published_time" content="2020-06-14T06:58:45.000Z">
-<meta property="article:modified_time" content="2020-06-14T04:30:03.743Z">
+<meta property="article:modified_time" content="2020-06-14T04:43:53.669Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="品优购">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/14/dubbox/....%5Cpublic%5Cassets%5Cdubbox%5Cdubbox.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Cdubbox.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -181,7 +181,9 @@
       
         <h2 id="Dubbox简介"><a href="#Dubbox简介" class="headerlink" title="Dubbox简介"></a>Dubbox简介</h2><p>​        Dubbox 是一个分布式服务框架，其前身是阿里巴巴开源项目Dubbo ，被国内电商及互联网项目中使用，后期阿里巴巴停止了该项目的维护，当当网便在Dubbo基础上进行优化，并继续维护，为了与原有的Dubbo区分，故将其命名为<strong><em>Dubbox</em></strong>。</p>
 <p>​        Dubbox 致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务治理方案。简单的说，dubbox就是个服务框架，如果没有分布式的需求，其实是不需要用的，只有在分布式的时候，才有dubbox这样的分布式服务框架的需求，并且本质上是个服务调用的东东，说白了就是个远程服务调用的分布式框架。</p>
-<p><img src="....%5Cpublic%5Cassets%5Cdubbox%5Cdubbox.png" alt="image-20200614114449432"></p>
+<a id="more"></a>
+
+<p><img src="/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Cdubbox.png" alt="image-20200614124136104"></p>
 <p><strong>节点角色说明</strong></p>
 <ul>
 <li>Provider: 暴露服务的提供方</li>
@@ -223,7 +225,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./zkServer.sh start</span><br></pre></td></tr></table></figure>
 
 <p>输出以下内容表示启动成功</p>
-<p><img src="....%5Cpublic%5Cassets%5Cdubbox%5Czookeeper1.jpg" alt="img"> </p>
+<p><img src="/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Czookeeper.png" alt="image-20200614124228480"></p>
 <p>关闭服务输入命令</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./zkServer.sh stop</span><br></pre></td></tr></table></figure>
 
@@ -266,7 +268,7 @@
 
 <p>修改后重新启动tomcat</p>
 <h3 id="管理端使用"><a href="#管理端使用" class="headerlink" title="管理端使用"></a>管理端使用</h3><p>打开浏览器，输入<a href="http://192.168.25.132:8080/dubbo-admin/" target="_blank" rel="noopener">http://192.168.25.132:8080/dubbo-admin/</a> ,登录用户名和密码均为root 进入首页。 (192.168.25.132:)是我部署的linux主机地址。</p>
-<p><img src="....%5Cpublic%5Cassets%5Cdubbox%5Cdubbo-admin.png" alt="image-20200614122905167"></p>
+<p><img src="/2020/06/14/dubbox/E:%5Cblog%5Csource_posts%5Clinux%E5%9F%BA%E7%A1%80%5Cdubbo-admin.png" alt="image-20200614124312290"></p>
 
       
 
