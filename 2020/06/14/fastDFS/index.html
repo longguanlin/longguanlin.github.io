@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/06/14/fastDFS/wps1.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/06/14/fastDFS/download.png">
 <meta property="article:published_time" content="2020-06-14T15:09:08.000Z">
-<meta property="article:modified_time" content="2020-06-14T15:38:38.332Z">
+<meta property="article:modified_time" content="2020-06-14T15:40:48.808Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="品优购">
 <meta name="twitter:card" content="summary">
@@ -185,6 +185,8 @@
 <p>Tracker server 作用是负载均衡和调度，通过 Tracker server 在文件上传时可以根据一些策略找到 Storage server 提供文件上传服务。可以将 tracker 称为追踪服务器或调度服务器。</p>
 <p>Storage server 作用是文件存储，客户端上传的文件最终存储在 Storage 服务器上，Storageserver 没有实现自己的文件系统而是利用操作系统 的文件系统来管理文件。可以将storage称为存储服务器。</p>
 <p>主要功能有：文件存储，文件同步，文件访问（文件上传/下载）,特别适合以文件为载体的在线服务，如图片网站，视频网站等</p>
+<a id="more"></a>
+
 <p><img src="/2020/06/14/fastDFS/image-20200614231329826.png" alt="image-20200614231329826"></p>
 <h4 id="服务端两个角色："><a href="#服务端两个角色：" class="headerlink" title="服务端两个角色："></a>服务端两个角色：</h4><h5 id="Tracker-server-追踪服务器"><a href="#Tracker-server-追踪服务器" class="headerlink" title="Tracker server 追踪服务器"></a>Tracker server 追踪服务器</h5><p>追踪服务器负责接收客户端的请求，选择合适的组合storage server ，tracker server 与 storage server之间也会用心跳机制来检测对方是否活着。<br> Tracker需要管理的信息也都放在内存中，并且里面所有的Tracker都是对等的（每个节点地位相等），很容易扩展。客户端访问集群的时候会随机分配一个Tracker来和客户端交互。</p>
 <h5 id="Storage-server-储存服务器"><a href="#Storage-server-储存服务器" class="headerlink" title="Storage server 储存服务器"></a>Storage server 储存服务器</h5><p>实际保存文件 ， Storage 分为多个组，每个组之间保存的文件是不同的。每个组内部可以有多个成员，组成员内部保存的内容是一样的，组成员的地位是一致的，没有主从的概念。</p>
