@@ -6,25 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>fastDFS | Hexo</title>
+  <title>redis | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是FastDFSFastDFS 是用 c 语言编写的一款开源的分布式文件系统。FastDFS 为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用 FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 FastDFS 架构包括 Tracker server 和 Storage server。客户端请求 Tracker serv">
+  <meta name="description" content="Redis简介引用官方的解释  Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fastDFS">
-<meta property="og:url" content="http://yoursite.com/2020/06/14/fastDFS/index.html">
+<meta property="og:title" content="redis">
+<meta property="og:url" content="http://yoursite.com/2020/06/15/redis/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="什么是FastDFSFastDFS 是用 c 语言编写的一款开源的分布式文件系统。FastDFS 为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用 FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 FastDFS 架构包括 Tracker server 和 Storage server。客户端请求 Tracker serv">
+<meta property="og:description" content="Redis简介引用官方的解释  Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets,">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/fastDFS/image-20200614231329826.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/fastDFS/upload.png">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/fastDFS/wps1.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/06/14/fastDFS/download.png">
-<meta property="article:published_time" content="2020-06-14T15:09:08.000Z">
-<meta property="article:modified_time" content="2020-06-14T15:40:48.808Z">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/redis/hashMap.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/redis/client-server.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/redis/client1-server1.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/redis/E:%5Cblog%5Csource_posts%5Credis%5Cclients-servers.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/redis/v2-76238e772c8bb5feaa5bb20e4207cfcf_720w.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/06/15/redis/v2-eb813169598035287738730a5f53c2cc_720w.jpg">
+<meta property="article:published_time" content="2020-06-15T03:20:35.000Z">
+<meta property="article:modified_time" content="2020-06-15T08:05:55.614Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="品优购">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/14/fastDFS/image-20200614231329826.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/15/redis/hashMap.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,175 +162,292 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-fastDFS" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-redis" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      fastDFS
+      redis
     </h1>
   
 
         
-        <a href="/2020/06/14/fastDFS/" class="archive-article-date">
-  	<time datetime="2020-06-14T15:09:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-14</time>
+        <a href="/2020/06/15/redis/" class="archive-article-date">
+  	<time datetime="2020-06-15T03:20:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是FastDFS"><a href="#什么是FastDFS" class="headerlink" title="什么是FastDFS"></a>什么是FastDFS</h2><p>FastDFS 是用 c 语言编写的一款开源的分布式文件系统。FastDFS 为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用 FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
-<p>FastDFS 架构包括 Tracker server 和 Storage server。客户端请求 Tracker server 进行文件上传、下载，通过 Tracker server 调度最终由 Storage server 完成文件上传和下载。</p>
-<p>Tracker server 作用是负载均衡和调度，通过 Tracker server 在文件上传时可以根据一些策略找到 Storage server 提供文件上传服务。可以将 tracker 称为追踪服务器或调度服务器。</p>
-<p>Storage server 作用是文件存储，客户端上传的文件最终存储在 Storage 服务器上，Storageserver 没有实现自己的文件系统而是利用操作系统 的文件系统来管理文件。可以将storage称为存储服务器。</p>
-<p>主要功能有：文件存储，文件同步，文件访问（文件上传/下载）,特别适合以文件为载体的在线服务，如图片网站，视频网站等</p>
-<a id="more"></a>
-
-<p><img src="/2020/06/14/fastDFS/image-20200614231329826.png" alt="image-20200614231329826"></p>
-<h4 id="服务端两个角色："><a href="#服务端两个角色：" class="headerlink" title="服务端两个角色："></a>服务端两个角色：</h4><h5 id="Tracker-server-追踪服务器"><a href="#Tracker-server-追踪服务器" class="headerlink" title="Tracker server 追踪服务器"></a>Tracker server 追踪服务器</h5><p>追踪服务器负责接收客户端的请求，选择合适的组合storage server ，tracker server 与 storage server之间也会用心跳机制来检测对方是否活着。<br> Tracker需要管理的信息也都放在内存中，并且里面所有的Tracker都是对等的（每个节点地位相等），很容易扩展。客户端访问集群的时候会随机分配一个Tracker来和客户端交互。</p>
-<h5 id="Storage-server-储存服务器"><a href="#Storage-server-储存服务器" class="headerlink" title="Storage server 储存服务器"></a>Storage server 储存服务器</h5><p>实际保存文件 ， Storage 分为多个组，每个组之间保存的文件是不同的。每个组内部可以有多个成员，组成员内部保存的内容是一样的，组成员的地位是一致的，没有主从的概念。</p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><p>海量的存储：主从型分布式存储，存储空间方便拓展,<br>fastDFS对文件内容做hash处理，避免出现重复文件<br>然后fastDFS结合Nginx集成, 提供网站效率</p>
-<h4 id="客户端Client角色："><a href="#客户端Client角色：" class="headerlink" title="客户端Client角色："></a>客户端Client角色：</h4><p>主要是上传下载数据的服务器，也就是我们自己的项目所部署在的服务器。每个客户端服务器都需要安装Nginx</p>
-<h3 id="文件上传及下载的流程"><a href="#文件上传及下载的流程" class="headerlink" title="文件上传及下载的流程"></a>文件上传及下载的流程</h3><h4 id="文件上传流程"><a href="#文件上传流程" class="headerlink" title="文件上传流程"></a>文件上传流程</h4><p><img src="/2020/06/14/fastDFS/upload.png" alt="img"></p>
-<p>客户端上传文件后存储服务器将文件 ID 返回给客户端，此文件 ID 用于以后访问该文件的索引信息。文件索引信息包括：组名，虚拟磁盘路径，数据两级目录，文件名。</p>
-<p><img src="/2020/06/14/fastDFS/wps1.jpg" alt="img"> </p>
-<p> <strong><em>\</em>组名**</strong>：文件上传后所在的 storage 组名称，在文件上传成功后有 storage 服务器返回，需要客户端自行保存。</p>
-<p><strong><em>\</em>虚拟磁盘路径**</strong>：storage 配置的虚拟路径，与磁盘选项 store_path*对应。如果配置了</p>
-<p>store_path0 则是 M00，如果配置了 store_path1 则是 M01，以此类推。</p>
-<p> <strong><em>\</em>数据两级目录**</strong>：storage 服务器在每个虚拟磁盘路径下创建的两级目录，用于存储数据</p>
-<p>文件。</p>
-<p><strong><em>\</em>文件名**</strong>：与文件上传时不同。是由存储服务器根据特定信息生成，文件名包含：源存储</p>
-<p>服务器 IP 地址、文件创建时间戳、文件大小、随机数和文件拓展名等信息。</p>
-<h4 id="文件下载流程"><a href="#文件下载流程" class="headerlink" title="文件下载流程"></a>文件下载流程</h4><p><img src="/2020/06/14/fastDFS/download.png" alt="download.png"></p>
-<p>当客户端向Tracker发起下载请求时，并不会直接下载，而是先查询storage server（检测同步状态），返回storage server的ip和端口，<br> 然后客户端会带着文件信息（组名，路径，文件名），去访问相关的storage，然后下载文件。</p>
-<h2 id="使用-暂时没有测试过，不知道能否成功-："><a href="#使用-暂时没有测试过，不知道能否成功-：" class="headerlink" title="使用(暂时没有测试过，不知道能否成功)："></a>使用(暂时没有测试过，不知道能否成功)：</h2><p>1.首先下载fastdfs安装包和依赖包（<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fsourceforge.net%2Fprojects%2Ffastdfs%2F" target="_blank" rel="noopener">sourceforge-&gt;fastdfs</a>），然后解压。</p>
-<ol>
-<li>配置tracker</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp &#x2F;etc&#x2F;fdfs&#x2F;tracker.conf.sample &#x2F;etc&#x2F;fdfs&#x2F;tracker.conf</span><br></pre></td></tr></table></figure>
-
-<p>在/home/python/目录中创建目录 fastdfs/tracker</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir –p &#x2F;home&#x2F;python&#x2F;fastdfs&#x2F;tracker</span><br></pre></td></tr></table></figure>
-
-<p>编辑/etc/fdfs/tracker.conf配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fdfs&#x2F;tracker.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改 base_path=/home/python/fastdfs/tracker</p>
-<p>3.配置storage</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp &#x2F;etc&#x2F;fdfs&#x2F;storage.conf.sample &#x2F;etc&#x2F;fdfs&#x2F;storage.conf</span><br></pre></td></tr></table></figure>
-
-<p>在/home/python/fastdfs/ 目录中创建目录 storage，这个目录就是实际数据存储的位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir –p &#x2F;home&#x2F;python&#x2F;fastdfs&#x2F;storage</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>编辑/etc/fdfs/storage.conf配置文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fdfs&#x2F;storage.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改内容：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">base_path=<span class="regexp">/home/python</span><span class="regexp">/fastdfs/storage</span></span><br><span class="line">store_path<span class="number">0</span>=<span class="regexp">/home/python</span><span class="regexp">/fastdfs/storage</span></span><br><span class="line">tracker_server=tracker所在机器的<span class="symbol">ip:</span><span class="number">22122</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>启动tracker和storage</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo trackerd &#x2F;etc&#x2F;fastdfs&#x2F;tracker.conf start</span><br><span class="line">sudo storaged &#x2F;etc&#x2F;fastdfs&#x2F;storage.conf start</span><br></pre></td></tr></table></figure>
-
-<p>6.测试安装是否成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp &#x2F;etc&#x2F;fdfs&#x2F;client.conf.sample &#x2F;etc&#x2F;fdfs&#x2F;client.conf</span><br></pre></td></tr></table></figure>
-
-<p>编辑/etc/fdfs/client.conf配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fdfs&#x2F;client.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改内容：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">base_path=<span class="regexp">/home/python</span><span class="regexp">/fastdfs/tracker</span></span><br><span class="line">tracker_server=tracker所在机器的<span class="symbol">ip:</span><span class="number">22122</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>上传文件测试：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdfs_upload_file &#x2F;etc&#x2F;fdfs&#x2F;client.conf filename</span><br></pre></td></tr></table></figure>
-
-<p>如果返回类似<code>group1/M00/00/00/rBIK6VcaP0aARXDSNFHrUgHEviQ394.jpg</code>的file_id则说明文件上传成功</p>
-<h2 id="添加Nginx模块"><a href="#添加Nginx模块" class="headerlink" title="添加Nginx模块"></a>添加Nginx模块</h2><ol>
-<li>确保电脑上已经装了Nginx。</li>
-<li>下载fastdfs-nginx-module压缩包，并解压</li>
-<li>进入Nginx的安装目录<br> 执行</li>
-</ol>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ./configure --prefix=<span class="regexp">/usr/</span>local/nginx/ --add-<span class="built_in">module</span>=fastdfs-nginx-<span class="built_in">module</span>解压后目录下src的绝对路径</span><br><span class="line">sudo ./make</span><br><span class="line">sudo ./make install</span><br><span class="line">sudo cp fastdfs-nginx-<span class="built_in">module</span>解压后目录中src/mod_fastdfs.conf  /etc/fdfs/mod_fastdfs.conf</span><br></pre></td></tr></table></figure>
-
-<p>4、</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fdfs&#x2F;mod_fastdfs.conf</span><br></pre></td></tr></table></figure>
-
-<p>修改内容：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connect_timeout=<span class="number">10</span></span><br><span class="line">tracker_server=tracker所在机器的ip:<span class="number">22122</span></span><br><span class="line">url_have_group_name=<span class="literal">true</span> <span class="comment">//返回file_id中包含组号</span></span><br><span class="line">store_path0=<span class="regexp">/home/</span>python/fastdfs/storage</span><br></pre></td></tr></table></figure>
-
-<p>5、</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp fastdfs-nginx-<span class="class"><span class="keyword">module</span>目录下<span class="title">http</span>.<span class="title">conf</span>  /<span class="title">etc</span>/<span class="title">fdfs</span>/<span class="title">http</span>.<span class="title">conf</span></span></span><br></pre></td></tr></table></figure>
-
-<p>6、</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp 解压缩的fastdfs-nginx-<span class="class"><span class="keyword">module</span>目录下的<span class="title">mime</span>.<span class="title">types</span> /<span class="title">etc</span>/<span class="title">fdfs</span>/<span class="title">mime</span>.<span class="title">types</span></span></span><br></pre></td></tr></table></figure>
-
-<p>7、</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>在http部分中添加配置信息如下：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">            listen       <span class="number">8888</span>;</span><br><span class="line">            server_name  localhost;</span><br><span class="line">            location ~/<span class="keyword">group</span>[<span class="number">0</span><span class="number">-9</span>]/ &#123; <span class="comment">// 地址有组号的，就到下面的位置里找</span></span><br><span class="line">                ngx_fastdfs_module;</span><br><span class="line">            &#125;</span><br><span class="line">            error_page   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /<span class="number">50</span>x.html;</span><br><span class="line">            location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>8、Python测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install fdfs_client</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fdfs_client <span class="keyword">import</span> Fdfs_client, get_tracker_conf</span><br><span class="line"></span><br><span class="line">conf = get_tracker_conf(<span class="string">'/etc/fastdfs/client.conf'</span>)</span><br><span class="line">client = Fdfs_client(conf)</span><br><span class="line">client.upload_by_filename(<span class="string">'test.jpg'</span>)</span><br><span class="line"><span class="comment">// 返回file_id则成功</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <h2 id="Redis简介"><a href="#Redis简介" class="headerlink" title="Redis简介"></a>Redis简介</h2><p>引用官方的解释</p>
+<blockquote>
+<p>Redis is an open source (BSD licensed), in-memory <strong>data structure store</strong>, used as a database, cache and message broker. It supports data structures such as <a href="https://redis.io/topics/data-types-intro#strings" target="_blank" rel="noopener">strings</a>, <a href="https://redis.io/topics/data-types-intro#hashes" target="_blank" rel="noopener">hashes</a>, <a href="https://redis.io/topics/data-types-intro#lists" target="_blank" rel="noopener">lists</a>, <a href="https://redis.io/topics/data-types-intro#sets" target="_blank" rel="noopener">sets</a>, <a href="https://redis.io/topics/data-types-intro#sorted-sets" target="_blank" rel="noopener">sorted sets</a> with range queries, <a href="https://redis.io/topics/data-types-intro#bitmaps" target="_blank" rel="noopener">bitmaps</a>, <a href="https://redis.io/topics/data-types-intro#hyperloglogs" target="_blank" rel="noopener">hyperloglogs</a>, <a href="https://redis.io/commands/geoadd" target="_blank" rel="noopener">geospatial indexes</a> with radius queries and <a href="https://redis.io/topics/streams-intro" target="_blank" rel="noopener">streams</a>. Redis has built-in <a href="https://redis.io/topics/replication" target="_blank" rel="noopener">replication</a>, <a href="https://redis.io/commands/eval" target="_blank" rel="noopener">Lua scripting</a>, <a href="https://redis.io/topics/lru-cache" target="_blank" rel="noopener">LRU eviction</a>, <a href="https://redis.io/topics/transactions" target="_blank" rel="noopener">transactions</a> and different levels of <a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">on-disk persistence</a>, and provides high availability via <a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">Redis Sentinel</a> and automatic partitioning with <a href="https://redis.io/topics/cluster-tutorial" target="_blank" rel="noopener">Redis Cluster</a>.</p>
+<p>You can run <strong>atomic operations</strong> on these types, like <a href="https://redis.io/commands/append" target="_blank" rel="noopener">appending to a string</a>; <a href="https://redis.io/commands/hincrby" target="_blank" rel="noopener">incrementing the value in a hash</a>; <a href="https://redis.io/commands/lpush" target="_blank" rel="noopener">pushing an element to a list</a>; <a href="https://redis.io/commands/sinter" target="_blank" rel="noopener">computing set intersection</a>, <a href="https://redis.io/commands/sunion" target="_blank" rel="noopener">union</a> and <a href="https://redis.io/commands/sdiff" target="_blank" rel="noopener">difference</a>; or <a href="https://redis.io/commands/zrangebyscore" target="_blank" rel="noopener">getting the member with highest ranking in a sorted set</a>.</p>
+<p>In order to achieve its outstanding performance, Redis works with an <strong>in-memory dataset</strong>. Depending on your use case, you can persist it either by <a href="https://redis.io/topics/persistence#snapshotting" target="_blank" rel="noopener">dumping the dataset to disk</a> every once in a while, or by <a href="https://redis.io/topics/persistence#append-only-file" target="_blank" rel="noopener">appending each command to a log</a>. Persistence can be optionally disabled, if you just need a feature-rich, networked, in-memory cache.</p>
+<p>Redis also supports trivial-to-setup <a href="https://redis.io/topics/replication" target="_blank" rel="noopener">master-slave asynchronous replication</a>, with very fast non-blocking first synchronization, auto-reconnection with partial resynchronization on net split.</p>
+<p>Other features include:</p>
+<ul>
+<li><a href="https://redis.io/topics/transactions" target="_blank" rel="noopener">Transactions</a></li>
+<li><a href="https://redis.io/topics/pubsub" target="_blank" rel="noopener">Pub/Sub</a></li>
+<li><a href="https://redis.io/commands/eval" target="_blank" rel="noopener">Lua scripting</a></li>
+<li><a href="https://redis.io/commands/expire" target="_blank" rel="noopener">Keys with a limited time-to-live</a></li>
+<li><a href="https://redis.io/topics/lru-cache" target="_blank" rel="noopener">LRU eviction of keys</a></li>
+<li><a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">Automatic failover</a></li>
+</ul>
+</blockquote>
+<p><strong>翻译过来就是：</strong></p>
+<p>Redis是开源的（BSD许可）内存<strong>数据结构存储</strong>，用作数据库，缓存和消息代理。它支持数据结构，例如 <a href="https://redis.io/topics/data-types-intro#strings" target="_blank" rel="noopener">字符串</a>，<a href="https://redis.io/topics/data-types-intro#hashes" target="_blank" rel="noopener">哈希</a>，<a href="https://redis.io/topics/data-types-intro#lists" target="_blank" rel="noopener">列表</a>，<a href="https://redis.io/topics/data-types-intro#sets" target="_blank" rel="noopener">集合</a>，带范围查询的<a href="https://redis.io/topics/data-types-intro#sorted-sets" target="_blank" rel="noopener">排序集合</a>，<a href="https://redis.io/topics/data-types-intro#bitmaps" target="_blank" rel="noopener">位图</a>，<a href="https://redis.io/topics/data-types-intro#hyperloglogs" target="_blank" rel="noopener">超日志</a>，带有半径查询的<a href="https://redis.io/topics/streams-intro" target="_blank" rel="noopener">流</a><a href="https://redis.io/commands/geoadd" target="_blank" rel="noopener">空间索引</a>和<a href="https://redis.io/topics/streams-intro" target="_blank" rel="noopener">流</a>。Redis具有内置的<a href="https://redis.io/topics/replication" target="_blank" rel="noopener">复制</a>，<a href="https://redis.io/commands/eval" target="_blank" rel="noopener">Lua脚本</a>，<a href="https://redis.io/topics/lru-cache" target="_blank" rel="noopener">LRU逐出</a>，<a href="https://redis.io/topics/transactions" target="_blank" rel="noopener">事务</a>和不同级别的<a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">磁盘持久性</a>，并通过以下方式提供高可用性<a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">Redis Sentinel</a>和<a href="https://redis.io/topics/cluster-tutorial" target="_blank" rel="noopener">Redis Cluster</a>自动分区。</p>
+<p>您可以 对这些类型运行<strong>原子操作</strong>，例如<a href="https://redis.io/commands/append" target="_blank" rel="noopener">追加到字符串</a>； <a href="https://redis.io/commands/hincrby" target="_blank" rel="noopener">在哈希中增加值</a> ; <a href="https://redis.io/commands/lpush" target="_blank" rel="noopener">将元素推送到列表</a> ; <a href="https://redis.io/commands/sinter" target="_blank" rel="noopener">计算集的交集</a>， <a href="https://redis.io/commands/sunion" target="_blank" rel="noopener">并集</a>和<a href="https://redis.io/commands/sdiff" target="_blank" rel="noopener">差</a> ; 或<a href="https://redis.io/commands/zrangebyscore" target="_blank" rel="noopener">获得排序集中排名最高的成员</a>。</p>
+<p>为了获得出色的性能，Redis使用 <strong>内存中的数据集</strong>。根据您的用例，您可以通过<a href="https://redis.io/topics/persistence#snapshotting" target="_blank" rel="noopener">将数据集</a> 偶尔<a href="https://redis.io/topics/persistence#snapshotting" target="_blank" rel="noopener">转储到磁盘上</a>，或者通过<a href="https://redis.io/topics/persistence#append-only-file" target="_blank" rel="noopener">将每个命令附加到log</a>来持久化它。如果只需要功能丰富的网络内存缓存，则可以选择禁用持久性。</p>
+<p>Redis还支持琐碎的设置<a href="https://redis.io/topics/replication" target="_blank" rel="noopener">主从异步复制</a>，具有非常快速的非阻塞式第一次同步，自动重新连接以及网络拆分中的部分重新同步。</p>
+<p>其他功能包括：</p>
+<ul>
+<li><a href="https://redis.io/topics/transactions" target="_blank" rel="noopener">交易次数</a></li>
+<li><a href="https://redis.io/topics/pubsub" target="_blank" rel="noopener">发布/订阅</a></li>
+<li><a href="https://redis.io/commands/eval" target="_blank" rel="noopener">Lua脚本</a></li>
+<li><a href="https://redis.io/commands/expire" target="_blank" rel="noopener">生存时间有限的键</a></li>
+<li><a href="https://redis.io/topics/lru-cache" target="_blank" rel="noopener">LRU收回钥匙</a></li>
+<li><a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">自动故障转移</a></li>
+</ul>
+<h2 id="Redis-优势"><a href="#Redis-优势" class="headerlink" title="Redis 优势"></a>Redis 优势</h2><ul>
+<li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
+<li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
+<li>原子 – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
+<li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ul>
+<h2 id="Redis与其他key-value存储有什么不同？"><a href="#Redis与其他key-value存储有什么不同？" class="headerlink" title="Redis与其他key-value存储有什么不同？"></a>Redis与其他key-value存储有什么不同？</h2><ul>
+<li>Redis有着更为复杂的数据结构并且提供对他们的原子性操作，这是一个不同于其他数据库的进化路径。Redis的数据类型都是基于基本数据结构的同时对程序员透明，无需进行额外的抽象。</li>
+<li>Redis运行在内存中但是可以持久化到磁盘，所以在对不同数据集进行高速读写时需要权衡内存，因为数据量不能大于硬件内存。在内存数据库方面的另一个优点是，相比在磁盘上相同的复杂的数据结构，在内存中操作起来非常简单，这样Redis可以做很多内部复杂性很强的事情。同时，在磁盘格式方面他们是紧凑的以追加的方式产生的，因为他们并不需要进行随机访问。</li>
+</ul>
+<h2 id="Redis的基本功能–缓存："><a href="#Redis的基本功能–缓存：" class="headerlink" title="Redis的基本功能–缓存："></a>Redis的基本功能–缓存：</h2><p>自己实现的缓存：</p>
+<p>平时我们都是使用Map或List缓存数据，就像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get value from cache</span></span><br><span class="line">String value = map.get(<span class="string">"someKey"</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">null</span> == value) &#123;</span><br><span class="line"> <span class="comment">// get value from DataBase</span></span><br><span class="line"> value = queryValueFromDB(<span class="string">"someKey"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而Hash表的数据都是这样的：</p>
+<p><img src="/2020/06/15/redis/hashMap.jpg" alt="hashMap.jpg"></p>
+<p>整个Hash表堪称一个数组，而这个数组的每一个元素都是一个链表，每个key都有一个next指向下一个元素的地址，这样子就形成了一个链表，当链表越来越大，数组也就越大，而占用的内存也越大。对整个Hash表的CRUD的性能都会下降。</p>
+<p>怎么解决？</p>
+<p>​    在Redis中，键值对（Key-Value Pair）存储方式是由字典（Dict）保存的，而字典底层是通过哈希表来实现的。通过哈希表中的节点保存字典中的键值对。我们知道当HashMap中由于Hash冲突（负载因子）超过某个阈值时，出于链表性能的考虑，会进行Resize的操作。Redis也一样</p>
+<p>​    在redis的具体实现中，使用了一种叫做渐进式哈希(rehashing)的机制来提高字典的缩放效率，避免 rehash 对服务器性能造成影响，渐进式 rehash 的好处在于它采取分而治之的方式， 将 rehash 键值对所需的计算工作均摊到对字典的每个添加、删除、查找和更新操作上， 从而避免了集中式 rehash 而带来的庞大计算量。</p>
+<h3 id="Redis实现缓存"><a href="#Redis实现缓存" class="headerlink" title="Redis实现缓存"></a>Redis实现缓存</h3><p>作为Redis用户，我们要怎样把数据放到上面提到的Hash表里呢？</p>
+<p>我们可以通过Redis的命令行，当然也可以通过各种语言的Redis API，在代码里面对Hash表进行操作，这些都是Redis客户端（Client），而Hash表所在的是Redis服务端（Server），也就是说Redis其实是一个C/S架构。</p>
+<p>显然，Client和Server可以是在一台机器上的，也可以不在：</p>
+<p><img src="/2020/06/15/redis/client-server.jpg" alt="img"></p>
+<h4 id="集群："><a href="#集群：" class="headerlink" title="集群："></a>集群：</h4><p><img src="/2020/06/15/redis/client1-server1.jpg" alt="img"></p>
+<p>客户端的请求会通过负载均衡算法（通常是一致性Hash），分散到各个Redis服务器上。<br>通过集群，我们实现了两个特性：</p>
+<ul>
+<li><strong>扩大缓存容量；</strong></li>
+<li><strong>提升吞吐量；</strong></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li><strong>数据可用性差</strong>：如果其中一台Redis挂了，那么上面全部的缓存数据都会丢失，导致原来可以从缓存中获取的请求，都去访问数据库了，数据库压力陡增。</li>
+<li><strong>数据查询缓慢</strong>：监测发现，每天有一段时间，Redis 1的访问量非常高，而且大多数请求都是去查一个相同的缓存数据，导致Redis 1非常忙碌，吞吐量不足以支撑这个高的查询负载。</li>
+</ul>
+<h4 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h4><p><img src="/2020/06/15/redis/E:%5Cblog%5Csource_posts%5Credis%5Cclients-servers.jpg" alt="img"></p>
+<p>通过Master-Slave模式，我们又实现了两个特性：</p>
+<ul>
+<li><strong>数据高可用</strong>：Master负责接收客户端的写入请求，将数据写到Master后，同步给Slave，实现数据备份。一旦Master挂了，可以将Slave提拔为Master；</li>
+<li><strong>提高查询效率</strong>：一旦Master发现自己忙不过来了，可以把一些查询请求，转发给Slave去处理，也就是Master负责读写或者只负责写，Slave负责读；</li>
+</ul>
+<p>为了让Master-Slave模式发挥更大的威力，我们当然可以放更多的Slave，就像这样：</p>
+<p><img src="/2020/06/15/redis/v2-76238e772c8bb5feaa5bb20e4207cfcf_720w.jpg" alt="img"></p>
+<p>可这样又引发了另一个问题，那就是Master进行数据备份的工作量变大了，Slava每增加一个，Master就要多备份一次，于是又有了<strong>Master/slave chains</strong>的架构：</p>
+<p><img src="/2020/06/15/redis/v2-eb813169598035287738730a5f53c2cc_720w.jpg" alt="img"></p>
+<p>没错，我们让Slave也有自己的Slave，有点像古代的分封制。</p>
+<p>这样最顶层的Master的备份压力就没那么大了，它只需要备份两次，然后让那它底下的那两台Slave再去和他们的Slave备份。</p>
+<h2 id="Linux下安装"><a href="#Linux下安装" class="headerlink" title="Linux下安装"></a>Linux下安装</h2><p><strong>下载地址：</strong><a href="http://redis.io/download，下载最新稳定版本。" target="_blank" rel="noopener">http://redis.io/download，下载最新稳定版本。</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ wget http:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-6.0.5.tar.gz</span><br><span class="line">$ tar xzf redis-2.8.17.tar.gz</span><br><span class="line">$ cd redis-2.8.17</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
+
+<p>make完后 redis-6.0.5目录下会出现编译后的redis服务程序redis-server,还有用于测试的客户端程序redis-cli,两个程序位于安装目录 src 目录下：</p>
+<p>下面启动redis服务.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd src</span><br><span class="line">$ .&#x2F;redis-server</span><br></pre></td></tr></table></figure>
+
+<p>注意这种方式启动redis 使用的是默认配置。也可以通过启动参数告诉redis使用指定配置文件使用下面命令启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd src</span><br><span class="line">$ .&#x2F;redis-server ..&#x2F;redis.conf</span><br></pre></td></tr></table></figure>
+
+<p><strong>redis.conf</strong> 是一个默认的配置文件。我们可以根据需要使用自己的配置文件。</p>
+<p>启动redis服务进程后，就可以使用测试客户端程序redis-cli和redis服务交互了。 比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd src</span><br><span class="line">$ .&#x2F;redis-cli</span><br><span class="line">redis&gt; set foo bar</span><br><span class="line">OK</span><br><span class="line">redis&gt; get foo</span><br><span class="line">&quot;bar&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Redis配置"><a href="#Redis配置" class="headerlink" title="Redis配置"></a>Redis配置</h2><p>Redis 的配置文件位于 Redis 安装目录下，文件名为 <strong>redis.conf</strong>(Windows 名为 redis.windows.conf)。</p>
+<p>通过config命令查看或设置配置项</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET CONFIG_SETTING_NAME</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET loglevel</span><br><span class="line"></span><br><span class="line">1) &quot;loglevel&quot;</span><br><span class="line">2) &quot;notice&quot;</span><br></pre></td></tr></table></figure>
+
+<p>使用 ***** 号获取所有配置项：</p>
+<h3 id="编辑配置"><a href="#编辑配置" class="headerlink" title="编辑配置"></a>编辑配置</h3><p>你可以通过修改 redis.conf 文件或使用 <strong>CONFIG set</strong> 命令来修改配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET CONFIG_SETTING_NAME NEW_CONFIG_VALUE</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; CONFIG SET loglevel &quot;notice&quot;</span><br><span class="line">OK</span><br><span class="line">redis 127.0.0.1:6379&gt; CONFIG GET loglevel</span><br><span class="line"></span><br><span class="line">1) &quot;loglevel&quot;</span><br><span class="line">2) &quot;notice&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p>redis.conf 配置项说明如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">配置项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left"><code>daemonize no</code></td>
+<td align="left">Redis 默认不是以守护进程的方式运行，可以通过该配置项修改，使用 yes 启用守护进程（Windows 不支持守护线程的配置为 no ）</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><code>pidfile /var/run/redis.pid</code></td>
+<td align="left">当 Redis 以守护进程方式运行时，Redis 默认会把 pid 写入 /var/run/redis.pid 文件，可以通过 pidfile 指定</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><code>port 6379</code></td>
+<td align="left">指定 Redis 监听端口，默认端口为 6379，作者在自己的一篇博文中解释了为什么选用 6379 作为默认端口，因为 6379 在手机按键上 MERZ 对应的号码，而 MERZ 取自意大利歌女 Alessia Merz 的名字</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left"><code>bind 127.0.0.1</code></td>
+<td align="left">绑定的主机地址</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left"><code>timeout 300</code></td>
+<td align="left">当客户端闲置多长秒后关闭连接，如果指定为 0 ，表示关闭该功能</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left"><code>loglevel notice</code></td>
+<td align="left">指定日志记录级别，Redis 总共支持四个级别：debug、verbose、notice、warning，默认为 notice</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left"><code>logfile stdout</code></td>
+<td align="left">日志记录方式，默认为标准输出，如果配置 Redis 为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给 /dev/null</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left"><code>databases 16</code></td>
+<td align="left">设置数据库的数量，默认数据库为0，可以使用SELECT 命令在连接上指定数据库id</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left"><code>save &lt;seconds&gt; &lt;changes&gt;</code>Redis 默认配置文件中提供了三个条件：<strong>save 900 1**</strong>save 300 10<strong>**save 60 10000</strong>分别表示 900 秒（15 分钟）内有 1 个更改，300 秒（5 分钟）内有 10 个更改以及 60 秒内有 10000 个更改。</td>
+<td align="left">指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left"><code>rdbcompression yes</code></td>
+<td align="left">指定存储至本地数据库时是否压缩数据，默认为 yes，Redis 采用 LZF 压缩，如果为了节省 CPU 时间，可以关闭该选项，但会导致数据库文件变的巨大</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left"><code>dbfilename dump.rdb</code></td>
+<td align="left">指定本地数据库文件名，默认值为 dump.rdb</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left"><code>dir ./</code></td>
+<td align="left">指定本地数据库存放目录</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left"><code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code></td>
+<td align="left">设置当本机为 slave 服务时，设置 master 服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master 进行数据同步</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left"><code>masterauth &lt;master-password&gt;</code></td>
+<td align="left">当 master 服务设置了密码保护时，slav 服务连接 master 的密码</td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left"><code>requirepass foobared</code></td>
+<td align="left">设置 Redis 连接密码，如果配置了连接密码，客户端在连接 Redis 时需要通过 AUTH <password> 命令提供密码，默认关闭</password></td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left"><code>maxclients 128</code></td>
+<td align="left">设置同一时间最大客户端连接数，默认无限制，Redis 可以同时打开的客户端连接数为 Redis 进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis 会关闭新的连接并向客户端返回 max number of clients reached 错误信息</td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left"><code>maxmemory &lt;bytes&gt;</code></td>
+<td align="left">指定 Redis 最大内存限制，Redis 在启动时会把数据加载到内存中，达到最大内存后，Redis 会先尝试清除已到期或即将到期的 Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis 新的 vm 机制，会把 Key 存放内存，Value 会存放在 swap 区</td>
+</tr>
+<tr>
+<td align="left">18</td>
+<td align="left"><code>appendonly no</code></td>
+<td align="left">指定是否在每次更新操作后进行日志记录，Redis 在默认情况下是异步的把数据写入磁盘，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为 redis 本身同步数据文件是按上面 save 条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为 no</td>
+</tr>
+<tr>
+<td align="left">19</td>
+<td align="left"><code>appendfilename appendonly.aof</code></td>
+<td align="left">指定更新日志文件名，默认为 appendonly.aof</td>
+</tr>
+<tr>
+<td align="left">20</td>
+<td align="left"><code>appendfsync everysec</code></td>
+<td align="left">指定更新日志条件，共有 3 个可选值：<strong>no</strong>：表示等操作系统进行数据缓存同步到磁盘（快）<strong>always</strong>：表示每次更新操作后手动调用 fsync() 将数据写到磁盘（慢，安全）<strong>everysec</strong>：表示每秒同步一次（折中，默认值）</td>
+</tr>
+<tr>
+<td align="left">21</td>
+<td align="left"><code>vm-enabled no</code></td>
+<td align="left">指定是否启用虚拟内存机制，默认值为 no，简单的介绍一下，VM 机制将数据分页存放，由 Redis 将访问量较少的页即冷数据 swap 到磁盘上，访问多的页面由磁盘自动换出到内存中（在后面的文章我会仔细分析 Redis 的 VM 机制）</td>
+</tr>
+<tr>
+<td align="left">22</td>
+<td align="left"><code>vm-swap-file /tmp/redis.swap</code></td>
+<td align="left">虚拟内存文件路径，默认值为 /tmp/redis.swap，不可多个 Redis 实例共享</td>
+</tr>
+<tr>
+<td align="left">23</td>
+<td align="left"><code>vm-max-memory 0</code></td>
+<td align="left">将所有大于 vm-max-memory 的数据存入虚拟内存，无论 vm-max-memory 设置多小，所有索引数据都是内存存储的(Redis 的索引数据 就是 keys)，也就是说，当 vm-max-memory 设置为 0 的时候，其实是所有 value 都存在于磁盘。默认值为 0</td>
+</tr>
+<tr>
+<td align="left">24</td>
+<td align="left"><code>vm-page-size 32</code></td>
+<td align="left">Redis swap 文件分成了很多的 page，一个对象可以保存在多个 page 上面，但一个 page 上不能被多个对象共享，vm-page-size 是要根据存储的 数据大小来设定的，作者建议如果存储很多小对象，page 大小最好设置为 32 或者 64bytes；如果存储很大大对象，则可以使用更大的 page，如果不确定，就使用默认值</td>
+</tr>
+<tr>
+<td align="left">25</td>
+<td align="left"><code>vm-pages 134217728</code></td>
+<td align="left">设置 swap 文件中的 page 数量，由于页表（一种表示页面空闲或使用的 bitmap）是在放在内存中的，，在磁盘上每 8 个 pages 将消耗 1byte 的内存。</td>
+</tr>
+<tr>
+<td align="left">26</td>
+<td align="left"><code>vm-max-threads 4</code></td>
+<td align="left">设置访问swap文件的线程数,最好不要超过机器的核数,如果设置为0,那么所有对swap文件的操作都是串行的，可能会造成比较长时间的延迟。默认值为4</td>
+</tr>
+<tr>
+<td align="left">27</td>
+<td align="left"><code>glueoutputbuf yes</code></td>
+<td align="left">设置在向客户端应答时，是否把较小的包合并为一个包发送，默认为开启</td>
+</tr>
+<tr>
+<td align="left">28</td>
+<td align="left"><code>hash-max-zipmap-entries 64 hash-max-zipmap-value 512</code></td>
+<td align="left">指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法</td>
+</tr>
+<tr>
+<td align="left">29</td>
+<td align="left"><code>activerehashing yes</code></td>
+<td align="left">指定是否激活重置哈希，默认为开启（后面在介绍 Redis 的哈希算法时具体介绍）</td>
+</tr>
+<tr>
+<td align="left">30</td>
+<td align="left"><code>include /path/to/local.conf</code></td>
+<td align="left">指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件</td>
+</tr>
+</tbody></table>
 
       
 
@@ -419,7 +538,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/14/fastDFS/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/15/redis/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -433,18 +552,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/06/15/redis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          redis
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/14/BCrypt%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">BCrypt加密算法</div>
+    <a href="/2020/06/14/fastDFS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">fastDFS</div>
       <i class="icon-circle-right"></i>
     </a>
   
