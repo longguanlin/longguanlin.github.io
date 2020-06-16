@@ -17,8 +17,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/06/16/solr/image-20200616120425833.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/16/solr/image-20200616122146324.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/16/solr/1184735-20180506210417292-1035778634.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/16/solr/1680856-20190615202303291-2100381243.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/16/solr/1680856-20190615202323134-782331876.png">
 <meta property="article:published_time" content="2020-06-16T03:14:19.000Z">
-<meta property="article:modified_time" content="2020-06-16T04:28:37.835Z">
+<meta property="article:modified_time" content="2020-06-16T04:52:17.828Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="品优购">
 <meta name="twitter:card" content="summary">
@@ -183,12 +186,15 @@
 <h1 id="Solr-is-the-popular-blazing-fast-open-source-enterprise-search-platform-built-on-Apache-Lucene™"><a href="#Solr-is-the-popular-blazing-fast-open-source-enterprise-search-platform-built-on-Apache-Lucene™" class="headerlink" title="Solr is the popular, blazing-fast, open source enterprise search platform built on Apache Lucene™"></a>Solr is the popular, blazing-fast, open source enterprise search platform built on Apache Lucene™</h1><p>Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world’s largest internet sites.</p>
 </blockquote>
 <p>​        翻译过来就是：solr是一个流行的、快速的、开源的企业搜索平台。        Solr具有高度可靠性、可扩展性和容错性，提供分布式索引、复制和负载平衡查询、自动故障转移和恢复、集中配置等功能。Solr为世界上许多最大的互联网站点提供搜索和导航功能。</p>
+<a id="more"></a>
+
 <p>​        大多数搜索引擎应用都必须具有某种搜索功能，问题是搜索功能往往是巨大的资源消耗并且它们由于沉重的数据库加载而拖垮你的应用的性能。</p>
 <p>​        这就是为什么转移负载到一个外部的搜索服务器是一个不错的主意，Apache Solr是一个流行的开源搜索服务器，它通过使用类似REST的HTTP API，这就确保你能从几乎任何编程语言来使用solr。</p>
 <p>​        Solr是一个开源搜索平台，用于构建搜索应用程序。 它建立在<a href="http://www.yiibai.com/lucene/" target="_blank" rel="noopener">Lucene</a>(全文搜索引擎)之上。 Solr是企业级的，快速的和高度可扩展的。 使用Solr构建的应用程序非常复杂，可提供高性能。</p>
 <p>​        Solr可以和<a href="http://www.yiibai.com/hadoop/" target="_blank" rel="noopener">Hadoop</a>一起使用。由于Hadoop处理大量数据，Solr帮助我们从这么大的源中找到所需的信息。不仅限于搜索，Solr也可以用于存储目的。像其他NoSQL数据库一样，它是一种非关系数据存储和处理技术。</p>
 <p>​        总之，Solr是一个可扩展的，可部署，搜索/存储引擎，优化搜索大量以文本为中心的数据。</p>
-<h2 id="Solr安装"><a href="#Solr安装" class="headerlink" title="Solr安装"></a>Solr安装</h2><p>1、安装Tomcat，</p>
+<p>　    Solr是基于Lucene(全文检索引擎)开发，它是一个独立系统，运行在Tomcat或Jetty(<code>solr6以上集成了jetty，无需再部署到servlet容器上</code>)，但其原生中文的分词词功能不行，需要集成第三方分词器（如IK Analyzer）。</p>
+<h2 id="Windows下Solr安装"><a href="#Windows下Solr安装" class="headerlink" title="Windows下Solr安装"></a>Windows下Solr安装</h2><p>1、安装Tomcat，</p>
 <p>2、下载<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="noopener">solr</a>解压solr。</p>
 <p>3、把 solr 下的dist目录solr-4.10.3.war部署到 Tomcat\webapps下(去掉版本号)。</p>
 <p>4、启动 Tomcat解压缩 war 包</p>
@@ -226,15 +232,37 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"item_keywords"</span> <span class="attr">type</span>=<span class="string">"text_ik"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"false"</span> <span class="attr">multiValued</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_title"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_category"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_seller"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"item_brand"</span> <span class="attr">dest</span>=<span class="string">"item_keywords"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="动态域"><a href="#动态域" class="headerlink" title="动态域"></a>动态域</h4><p>当我们需要动态扩充字段时，我们需要使用动态域。</p>
+<p><img src="/2020/06/16/solr/1184735-20180506210417292-1035778634.png" alt="img"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dynamicField</span> <span class="attr">name</span>=<span class="string">"item_spec_*"</span> <span class="attr">type</span>=<span class="string">"string"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"true"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
+<h2 id="Linux下Solr的安装"><a href="#Linux下Solr的安装" class="headerlink" title="Linux下Solr的安装"></a>Linux下Solr的安装</h2><p>1：把Tomcat安装包导入Linux系统，解压 Tomcat并重命名tomcat-solr</p>
+<p>2：导入solr的Linux安装包到Linux服务器，解压 solr-4.10.3.tgz.tgz。</p>
+<p>命令：tar -zxvf solr-4.10.3.tgz.tgz</p>
+<p>3：把 solr 下的example/webapps/solr.war部署到 Tomcat-solr\webapps下(去掉版本号)。</p>
+<p>命令：cp solr-4.10.3/example/webapps/solr.war tomcat-solr/webapps/</p>
+<p>4：使用命令解压：unzip -oq solr.war -d solr</p>
+<p>5：把solr下example/lib/ext 目录下的所有的 jar 包，添加到 solr 的工程中(\WEB-INF\lib目录下)。</p>
+<p>命令：cp solr-4.10.3/example/lib/ext/* tomcat-solr/webapps/solr/WEB-INF/lib/</p>
+<p>6：创建一个索引仓库。solr 下的/example/<strong>solr</strong> 目录就是一个索引仓库。复制此目录【solr】到任意磁盘即可完 成自定义索引仓库创建。</p>
+<p>命令：cp -r solr-4.10.3/example/solr . (把solr索引库仓库文件夹拷贝当前目录; . 表示当前目录)</p>
+<p>7：关联tomcat服务器中 solr项目 和 索引仓库<strong>solr</strong>。修改Tomcat/bin/catalina.sh文件指定索引仓库路径即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在Tomcat&#x2F;bin&#x2F;catalina.sh第二行指定索引仓库路径即可</span><br><span class="line">    export JAVA_OPTS&#x3D;&quot;-Dsolr.solr.home&#x3D;&#x2F;usr&#x2F;local&#x2F;dintalk&#x2F;singleSolr&#x2F;solr&quot;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
+<p>8：启动 Tomcat</p>
+<p><a href="http://IP:8080/solr/" target="_blank" rel="noopener">http://IP:8080/solr/</a></p>
+<p>9.加载contrib,dist依赖类库</p>
+<p>把solr-4.10.3/contrib,dist 文件夹拷贝 索引仓库目录下（和索引库在同一级目录）</p>
+<p>命令：<strong>cp -r solr-4.10.3/contrib/ solr-4.10.3/dist/ solr</strong></p>
+<p>配置solr索引库中核心配置文件：solrConfig.xml 加载contrib，dist依赖jar包</p>
+<p><img src="/2020/06/16/solr/1680856-20190615202303291-2100381243.png" alt="img"></p>
+<h3 id="3-中文分析器IK-Analyzer的安装"><a href="#3-中文分析器IK-Analyzer的安装" class="headerlink" title="3.中文分析器IK Analyzer的安装"></a>3.中文分析器IK Analyzer的安装</h3><p>IK Analyzer 是一个开源的，基亍 java 语言开发的轻量级的中文分词工具包。最初，它是以开源项目Luence 为应用主体的，结合词典分词和文法分析算法的中文分词组件。从 3.0 版本开始，IK 发展为面向 Java 的公用分词组件，独立亍 Lucene 项目，同时提供了对 Lucene 的默认优化实现。在 2012 版本中，IK 实现了简单的分词歧义排除算法，标志着 IK 分词器从单纯的词典分词向模拟语义分词衍化。</p>
+<h4 id="3-1IK-Analyzer配置"><a href="#3-1IK-Analyzer配置" class="headerlink" title="3.1IK Analyzer配置"></a>3.1IK Analyzer配置</h4><p>1、把IKAnalyzer2012FF_u1.jar 添加到 solr 工程的 lib 目录下</p>
+<p>2、创建WEB-INF/<strong>classes</strong>（手动创建）文件夹 把扩展词典、停用词词典、配置文件放到 solr 工程的 WEB- INF/classes 目录下：</p>
+<p><img src="/2020/06/16/solr/1680856-20190615202323134-782331876.png" alt="img"></p>
+<p>3、修改 索引库 的 schema.xml 文件，配置一个 FieldType，使用 IKAnalyzer</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">name</span>=<span class="string">"text_ik"</span> <span class="attr">class</span>=<span class="string">"solr.TextField"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">class</span>=<span class="string">"org.wltea.analyzer.lucene.IKAnalyzer"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldType</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -367,6 +395,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/06/16/SpringDataSolr/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringDataSolr
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/15/SpringDataRedis/" id="article-nav-older" class="article-nav-link-wrap">
