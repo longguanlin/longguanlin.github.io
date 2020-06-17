@@ -19,8 +19,9 @@
 <meta property="og:image" content="http://yoursite.com/2020/06/16/jms/image-20200616231516961.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/16/jms/image-20200616231935311.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/16/jms/image-20200616231959106.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/16/jms/image-20200617114906336.png">
 <meta property="article:published_time" content="2020-06-16T15:00:03.000Z">
-<meta property="article:modified_time" content="2020-06-16T15:41:03.499Z">
+<meta property="article:modified_time" content="2020-06-17T03:51:04.780Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="品优购">
 <meta name="twitter:card" content="summary">
@@ -271,6 +272,43 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">ContextConfiguration</span>(<span class="title">locations</span></span>=<span class="string">"classpath:applicationContext-jms-consumer-topic.xml"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestTopic</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testTopic</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			System.in.read();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>测试：同时运行三个消费者工程，在运行生产者工程，查看三个消费者工程的控制台输出。</p>
+<h2 id="SpringBoot整合ActiveMQ"><a href="#SpringBoot整合ActiveMQ" class="headerlink" title="SpringBoot整合ActiveMQ"></a>SpringBoot整合ActiveMQ</h2><h3 id="使用内嵌服务"><a href="#使用内嵌服务" class="headerlink" title="使用内嵌服务"></a>使用内嵌服务</h3><p>（1）在pom.xml中引入ActiveMQ起步依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-activemq<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）创建消息生产者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消息生产者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> JmsMessagingTemplate jmsMessagingTemplate;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/send"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(String text)</span></span>&#123;</span><br><span class="line">		jmsMessagingTemplate.convertAndSend(<span class="string">"itcast"</span>, text);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）创建消息消费者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> </span>&#123;</span><br><span class="line">	<span class="meta">@JmsListener</span>(destination=<span class="string">"itcast"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readMessage</span><span class="params">(String text)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"接收到消息："</span>+text);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试：启动服务后，在浏览器执行 </p>
+<p><a href="http://localhost:8080/send" target="_blank" rel="noopener">http://localhost:8088/send</a>.do?text=aaaaa</p>
+<p>即可看到控制台输出消息提示。Spring Boot内置了ActiveMQ的服务，所以我们不用单独启动也可以执行应用程序。</p>
+<h3 id="使用外部服务"><a href="#使用外部服务" class="headerlink" title="使用外部服务"></a>使用外部服务</h3><p>在src/main/resources下的application.properties增加配置, 指定ActiveMQ的地址</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.activemq.broker-url=tcp://192.168.25.135:61616</span><br></pre></td></tr></table></figure>
+
+<p>运行后，会在activeMQ中看到发送的queue </p>
+<p><img src="/2020/06/16/jms/image-20200617114906336.png" alt="image-20200617114906336"></p>
+<h3 id="发送Map信息"><a href="#发送Map信息" class="headerlink" title="发送Map信息"></a>发送Map信息</h3><p>（1）修改QueueController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/sendmap"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMap</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Map map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	map.put(<span class="string">"mobile"</span>, <span class="string">"13900001111"</span>);</span><br><span class="line">	map.put(<span class="string">"content"</span>, <span class="string">"恭喜获得10元代金券"</span>);		</span><br><span class="line">	jmsMessagingTemplate.convertAndSend(<span class="string">"itcast_map"</span>,map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）修改Consumer.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JmsListener</span>(destination=<span class="string">"itcast_map"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readMap</span><span class="params">(Map map)</span></span>&#123;</span><br><span class="line">		System.out.println(map);		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
 
@@ -374,6 +412,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/06/17/alidayu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          alidayu
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/16/FreeMarker/" id="article-nav-older" class="article-nav-link-wrap">
