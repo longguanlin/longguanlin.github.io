@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>EasyExcel | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="EasyExcel一、初识EasyExcel1. Apache POI先说POI，有过报表导入导出经验的同学，应该听过或者使用。 Apache POI是Apache软件基金会的开源函式库，提供跨平台的Java API实现Microsoft Office格式档案读写。但是存在如下一些问题： 1.1 学习使用成本较高对POI有过深入了解的才知道原来POI还有SAX模式（Dom解析模式）。但SAX模式相">
+  <meta name="description" content="EasyExcel一、初识EasyExcel1. Apache POI先说POI，有过报表导入导出经验的同学，应该听过或者使用。 Apache POI是Apache软件基金会的开源函式库，提供跨平台的Java API实现Microsoft Office格式档案读写。但是存在如下一些问题：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EasyExcel">
 <meta property="og:url" content="http://yoursite.com/2020/07/24/EasyExcel/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="EasyExcel一、初识EasyExcel1. Apache POI先说POI，有过报表导入导出经验的同学，应该听过或者使用。 Apache POI是Apache软件基金会的开源函式库，提供跨平台的Java API实现Microsoft Office格式档案读写。但是存在如下一些问题： 1.1 学习使用成本较高对POI有过深入了解的才知道原来POI还有SAX模式（Dom解析模式）。但SAX模式相">
+<meta property="og:description" content="EasyExcel一、初识EasyExcel1. Apache POI先说POI，有过报表导入导出经验的同学，应该听过或者使用。 Apache POI是Apache软件基金会的开源函式库，提供跨平台的Java API实现Microsoft Office格式档案读写。但是存在如下一些问题：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/07/24/EasyExcel/large.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/24/EasyExcel/simpleFillTemplate.png">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/07/24/EasyExcel/mixFillTemplate.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/24/EasyExcel/HORIZONTALFillTemplate.png">
 <meta property="article:published_time" content="2020-07-24T03:43:42.000Z">
-<meta property="article:modified_time" content="2020-07-24T09:53:35.542Z">
+<meta property="article:modified_time" content="2020-07-24T09:56:49.751Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="easyExcel">
 <meta name="twitter:card" content="summary">
@@ -183,6 +183,8 @@
       
         <h1 id="EasyExcel"><a href="#EasyExcel" class="headerlink" title="EasyExcel"></a><code>EasyExcel</code></h1><h2 id="一、初识EasyExcel"><a href="#一、初识EasyExcel" class="headerlink" title="一、初识EasyExcel"></a>一、初识<code>EasyExcel</code></h2><h3 id="1-Apache-POI"><a href="#1-Apache-POI" class="headerlink" title="1. Apache POI"></a>1. Apache POI</h3><p>先说<code>POI</code>，有过报表导入导出经验的同学，应该听过或者使用。</p>
 <p><code>Apache POI</code>是Apache软件基金会的开源函式库，提供跨平台的<code>Java API</code>实现<code>Microsoft Office</code>格式档案读写。但是存在如下一些问题：</p>
+<a id="more"></a>
+
 <h4 id="1-1-学习使用成本较高"><a href="#1-1-学习使用成本较高" class="headerlink" title="1.1 学习使用成本较高"></a>1.1 学习使用成本较高</h4><p>对POI有过深入了解的才知道原来POI还有SAX模式（Dom解析模式）。但SAX模式相对比较复杂，excel有03和07两种版本，两个版本数据存储方式截然不同，sax解析方式也各不一样。</p>
 <p>想要了解清楚这两种解析方式，才去写代码测试，估计两天时间是需要的。再加上即使解析完，要转换到自己业务模型还要很多繁琐的代码。总体下来感觉至少需要三天，由于代码复杂，后续维护成本巨大。</p>
 <p>POI的SAX模式的API可以一定程度的解决一些内存溢出的问题，但是POI还是有一些缺陷，比如07版Excel解压缩以及解压后存储都是在内存中完成的，内存消耗依然很大，一个3M的Excel用POI的SAX解析，依然需要100M左右内存。</p>
