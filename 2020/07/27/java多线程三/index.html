@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/wps24.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/wps25.jpg">
 <meta property="article:published_time" content="2020-07-27T03:46:36.000Z">
-<meta property="article:modified_time" content="2020-07-27T09:15:08.341Z">
+<meta property="article:modified_time" content="2020-07-27T09:38:26.203Z">
 <meta property="article:author" content="LongGuanLin">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
         <h1 id="8-超卖问题解决"><a href="#8-超卖问题解决" class="headerlink" title="8 超卖问题解决"></a><strong>8</strong> <strong><em>超卖问题解决</em></strong></h1><p>上面那种方案在没有并发情况下是可以的，但秒杀一般是具备大量并发，并发时就有可能出现超卖问题。</p>
  <a id="more"></a>
 
-<p><strong>//获取商品详情**</strong> <strong>SeckillGoods seckillGoods = (SeckillGoods) *</strong>redisTemplate<strong><em>.boundHashOps(SeckillGoods.</em></strong>class<strong>*.getSimpleName()).get(seckillid); *</strong>if<strong><em>(goodsId==</em></strong>null<strong>*){   *</strong>throw new<strong>* RuntimeException(*</strong>“已售罄！”***); }</p>
+<p>//获取商品详情<em>* SeckillGoods seckillGoods = (SeckillGoods) *redisTemplate.boundHashOps(SeckillGoods.class</em>.getSimpleName()).get(seckillid); <em>if(goodsId==null</em>){   <em>throw new</em> RuntimeException(*”已售罄！”***); }</p>
 <p>上面保存订单的方式是先查看Redis中对应商品是否存在，如果存在且数量是否&gt;0如果&gt;0则下单，如果在并发情况下,如果20个人同时在执行如上查询代码这里，而此时对应商品只有一个，则会下20个单，而这20个单一定是有问题的，因为1件商品不可能同时给20个人发货。那么如何解决这种并发问题呢？我们可以用Redis队列实现。</p>
 <p><img src="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/wps24.jpg" alt="img"> </p>
 <h2 id="8-1-数据导入Redis队列操作"><a href="#8-1-数据导入Redis队列操作" class="headerlink" title="8.1 数据导入Redis队列操作"></a>8.1 数据导入Redis队列操作</h2><p>修改pyg-seckill-task中SeckillTask.java</p>
