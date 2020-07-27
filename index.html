@@ -152,6 +152,475 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-十大经典排序算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">十大经典排序算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-07-27T08:59:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="十大经典排序算法（动图演示）"><a href="#十大经典排序算法（动图演示）" class="headerlink" title="十大经典排序算法（动图演示）"></a><a href="https://www.cnblogs.com/onepixel/p/7674659.html" target="_blank" rel="noopener">十大经典排序算法（动图演示）</a></h1><h3 id="0、算法概述"><a href="#0、算法概述" class="headerlink" title="0、算法概述"></a>0、算法概述</h3><h4 id="0-1-算法分类"><a href="#0-1-算法分类" class="headerlink" title="0.1 算法分类** **"></a>0.1 算法分类** **</h4><p>十种常见排序算法可以分为两大类：</p>
+<ul>
+<li><strong>比较类排序</strong>：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。</li>
+<li><strong>非比较类排序</strong>：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间非比较类排序。 </li>
+</ul>
+<p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20190306165258970-1789860540.png" alt="img"></p>
+<h4 id="0-2-算法复杂度"><a href="#0-2-算法复杂度" class="headerlink" title="0.2 算法复杂度"></a>0.2 算法复杂度</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20180402133438219-1946132192.png" alt="img"></p>
+<p><strong>0.3 相关概念</strong></p>
+<ul>
+<li><strong>稳定</strong>：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</li>
+<li><strong>不稳定</strong>：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</li>
+<li><strong>时间复杂度</strong>：对排序数据的总的操作次数。反映当n变化时，操作次数呈现什么规律。</li>
+<li><strong>空间复杂度：</strong>是指算法在计算机</li>
+</ul>
+<p>内执行时所需存储空间的度量，它也是数据规模n的函数。 </p>
+<h3 id="1、冒泡排序（Bubble-Sort）"><a href="#1、冒泡排序（Bubble-Sort）" class="headerlink" title="1、冒泡排序（Bubble Sort）"></a>1、冒泡排序（Bubble Sort）</h3><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。 </p>
+<h4 id="1-1-算法描述"><a href="#1-1-算法描述" class="headerlink" title="1.1 算法描述"></a>1.1 算法描述</h4><ul>
+<li>比较相邻的元素。如果第一个比第二个大，就交换它们两个；</li>
+<li>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数；</li>
+<li>针对所有的元素重复以上的步骤，除了最后一个；</li>
+<li>重复步骤1~3，直到排序完成。</li>
+</ul>
+<p><strong>1.2 动图演示</strong></p>
+<p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015223238449-2146169197.gif" alt="img"></p>
+<h4 id="1-3-代码实现"><a href="#1-3-代码实现" class="headerlink" title="1.3 代码实现"></a>1.3 代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lgl.排序算法;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *冒泡算法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">        <span class="keyword">int</span> len=arr.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len-<span class="number">1</span>-i;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">                    <span class="keyword">int</span> temp=arr[j];</span><br><span class="line">                    arr[j]=arr[j+<span class="number">1</span>];</span><br><span class="line">                    arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> []arr=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">13</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        arr=bubbleSort(arr);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a: arr</span><br><span class="line">             ) &#123;</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、选择排序（Selection-Sort）"><a href="#2、选择排序（Selection-Sort）" class="headerlink" title="2、选择排序（Selection Sort）"></a>2、选择排序（Selection Sort）</h3><p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。 </p>
+<h4 id="2-1-算法描述"><a href="#2-1-算法描述" class="headerlink" title="2.1 算法描述"></a>2.1 算法描述</h4><p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p>
+<ul>
+<li>初始状态：无序区为R[1..n]，有序区为空；</li>
+<li>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1..i-1]和R(i..n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1..i]和R[i+1..n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；</li>
+<li>n-1趟结束，数组有序化了。</li>
+</ul>
+<h4 id="2-2-动图演示"><a href="#2-2-动图演示" class="headerlink" title="2.2 动图演示"></a><strong>2.2 动图演示</strong></h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015224719590-1433219824.gif" alt="img">　　</p>
+<h4 id="2-3-代码实现"><a href="#2-3-代码实现" class="headerlink" title="2.3 代码实现"></a>2.3 代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lgl.排序算法;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 选择排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] selectionSort(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">        <span class="keyword">int</span> len=arr.length;</span><br><span class="line">        <span class="keyword">int</span> minIndex,temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            minIndex=i;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;len;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j]&lt;arr[minIndex])&#123;</span><br><span class="line">                    minIndex=j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            temp=arr[i];</span><br><span class="line">            arr[i]=arr[minIndex];</span><br><span class="line">            arr[minIndex]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> []arr=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">13</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        arr=selectionSort(arr);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a: arr</span><br><span class="line">        ) &#123;</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-算法分析"><a href="#2-4-算法分析" class="headerlink" title="2.4 算法分析"></a>2.4 算法分析</h4><p>表现最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。理论上讲，选择排序可能也是平时排序一般人想到的最多的排序方法了吧。</p>
+<h3 id="3、插入排序（Insertion-Sort）"><a href="#3、插入排序（Insertion-Sort）" class="headerlink" title="3、插入排序（Insertion Sort）"></a>3、插入排序（Insertion Sort）</h3><p>插入排序（Insertion-Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
+<h4 id="3-1-算法描述"><a href="#3-1-算法描述" class="headerlink" title="3.1 算法描述"></a>3.1 算法描述</h4><p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
+<ul>
+<li>从第一个元素开始，该元素可以认为已经被排序；</li>
+<li>取出下一个元素，在已经排序的元素序列中从后向前扫描；</li>
+<li>如果该元素（已排序）大于新元素，将该元素移到下一位置；</li>
+<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；</li>
+<li>将新元素插入到该位置后；</li>
+<li>重复步骤2~5。</li>
+</ul>
+<h4 id="3-2-动图演示"><a href="#3-2-动图演示" class="headerlink" title="3.2 动图演示"></a>3.2 动图演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015225645277-1151100000.gif" alt="img"></p>
+<h4 id="3-2-代码实现"><a href="#3-2-代码实现" class="headerlink" title="3.2 代码实现"></a>3.2 代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lgl.排序算法;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] insertionSort(<span class="keyword">int</span>[] arr)&#123;</span><br><span class="line">        <span class="keyword">int</span> len=arr.length;</span><br><span class="line">        <span class="keyword">int</span> preIndex,current;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">            preIndex=i-<span class="number">1</span>;</span><br><span class="line">            current=arr[i];</span><br><span class="line">            <span class="keyword">while</span> (preIndex&gt;<span class="number">0</span>&amp;&amp;arr[preIndex]&gt;current)&#123;</span><br><span class="line">                arr[preIndex+<span class="number">1</span>]=arr[preIndex];</span><br><span class="line">                preIndex--;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[preIndex+<span class="number">1</span>]=current;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> []arr=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">13</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        arr=insertionSort(arr);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a: arr</span><br><span class="line">        ) &#123;</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-4-算法分析"><a href="#3-4-算法分析" class="headerlink" title="3.4 算法分析"></a>3.4 算法分析</h4><p>插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<h3 id="4、希尔排序（Shell-Sort）"><a href="#4、希尔排序（Shell-Sort）" class="headerlink" title="4、希尔排序（Shell Sort）"></a>4、希尔排序（Shell Sort）</h3><p>1959年Shell发明，第一个突破O(n2)的排序算法，是简单插入排序的改进版。它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫<strong>缩小增量排序</strong>。</p>
+<h4 id="4-1-算法描述"><a href="#4-1-算法描述" class="headerlink" title="4.1 算法描述"></a>4.1 算法描述</h4><p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
+<ul>
+<li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</li>
+<li>按增量序列个数k，对序列进行k 趟排序；</li>
+<li>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</li>
+</ul>
+<h4 id="4-2-动图演示"><a href="#4-2-动图演示" class="headerlink" title="4.2 动图演示"></a>4.2 动图演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20180331170017421-364506073.gif" alt="img"></p>
+<h4 id="4-3-代码实现"><a href="#4-3-代码实现" class="headerlink" title="4.3 代码实现"></a>4.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    varlen = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(vargap = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>); gap &gt; <span class="number">0</span>; gap = <span class="built_in">Math</span>.floor(gap / <span class="number">2</span>)) &#123;</span><br><span class="line">        <span class="comment">// 注意：这里和动图演示的不一样，动图是分组执行，实际操作是多个分组交替执行</span></span><br><span class="line">        <span class="keyword">for</span>(vari = gap; i &lt; len; i++) &#123;</span><br><span class="line">            varj = i;</span><br><span class="line">            varcurrent = arr[i];</span><br><span class="line">            <span class="keyword">while</span>(j - gap &gt;= <span class="number">0</span> &amp;&amp; current &lt; arr[j - gap]) &#123;</span><br><span class="line">                 arr[j] = arr[j - gap];</span><br><span class="line">                 j = j - gap;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j] = current;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    returnarr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-算法分析"><a href="#4-4-算法分析" class="headerlink" title="4.4 算法分析"></a>4.4 算法分析</h4><p>希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版）》的合著者Robert Sedgewick提出的。　</p>
+<h3 id="5、归并排序（Merge-Sort）"><a href="#5、归并排序（Merge-Sort）" class="headerlink" title="5、归并排序（Merge Sort）"></a>5、归并排序（Merge Sort）</h3><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。 </p>
+<h4 id="5-1-算法描述"><a href="#5-1-算法描述" class="headerlink" title="5.1 算法描述"></a>5.1 算法描述</h4><ul>
+<li>把长度为n的输入序列分成两个长度为n/2的子序列；</li>
+<li>对这两个子序列分别采用归并排序；</li>
+<li>将两个排序好的子序列合并成一个最终的排序序列。</li>
+</ul>
+<h4 id="5-2-动图演示"><a href="#5-2-动图演示" class="headerlink" title="5.2 动图演示"></a>5.2 动图演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015230557043-37375010.gif" alt="img"></p>
+<h4 id="5-3-代码实现"><a href="#5-3-代码实现" class="headerlink" title="5.3 代码实现"></a>5.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    varlen = arr.length;</span><br><span class="line">    <span class="keyword">if</span>(len &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        returnarr;</span><br><span class="line">    &#125;</span><br><span class="line">    varmiddle = <span class="built_in">Math</span>.floor(len / <span class="number">2</span>),</span><br><span class="line">        left = arr.slice(<span class="number">0</span>, middle),</span><br><span class="line">        right = arr.slice(middle);</span><br><span class="line">    returnmerge(mergeSort(left), mergeSort(right));</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">    varresult = [];</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span>(left.length&gt;<span class="number">0</span> &amp;&amp; right.length&gt;<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]) &#123;</span><br><span class="line">            result.push(left.shift());</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            result.push(right.shift());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span>(left.length)</span><br><span class="line">        result.push(left.shift());</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span>(right.length)</span><br><span class="line">        result.push(right.shift());</span><br><span class="line"> </span><br><span class="line">    returnresult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-4-算法分析"><a href="#5-4-算法分析" class="headerlink" title="5.4 算法分析"></a>5.4 算法分析</h4><p>归并排序是一种稳定的排序方法。和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是O(nlogn）的时间复杂度。代价是需要额外的内存空间。</p>
+<h3 id="6、快速排序（Quick-Sort）"><a href="#6、快速排序（Quick-Sort）" class="headerlink" title="6、快速排序（Quick Sort）"></a>6、快速排序（Quick Sort）</h3><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<h4 id="6-1-算法描述"><a href="#6-1-算法描述" class="headerlink" title="6.1 算法描述"></a>6.1 算法描述</h4><p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
+<ul>
+<li>从数列中挑出一个元素，称为 “基准”（pivot）；</li>
+<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li>
+<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+</ul>
+<h4 id="6-2-动图演示"><a href="#6-2-动图演示" class="headerlink" title="6.2 动图演示"></a>6.2 动图演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015230936371-1413523412.gif" alt="img"></p>
+<h4 id="6-3-代码实现"><a href="#6-3-代码实现" class="headerlink" title="6.3 代码实现"></a>6.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr, left, right</span>) </span>&#123;</span><br><span class="line">    varlen = arr.length,</span><br><span class="line">        partitionIndex,</span><br><span class="line">        left = typeofleft != <span class="string">'number'</span>? <span class="number">0</span> : left,</span><br><span class="line">        right = typeofright != <span class="string">'number'</span>? len - <span class="number">1</span> : right;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(left &lt; right) &#123;</span><br><span class="line">        partitionIndex = partition(arr, left, right);</span><br><span class="line">        quickSort(arr, left, partitionIndex<span class="number">-1</span>);</span><br><span class="line">        quickSort(arr, partitionIndex+<span class="number">1</span>, right);</span><br><span class="line">    &#125;</span><br><span class="line">    returnarr;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span>(<span class="params">arr, left ,right</span>) </span>&#123;     <span class="comment">// 分区操作</span></span><br><span class="line">    varpivot = left,                      <span class="comment">// 设定基准值（pivot）</span></span><br><span class="line">        index = pivot + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(vari = index; i &lt;= right; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] &lt; arr[pivot]) &#123;</span><br><span class="line">            swap(arr, i, index);</span><br><span class="line">            index++;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">    swap(arr, pivot, index - <span class="number">1</span>);</span><br><span class="line">    returnindex<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>) </span>&#123;</span><br><span class="line">    vartemp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7、堆排序（Heap-Sort）"><a href="#7、堆排序（Heap-Sort）" class="headerlink" title="7、堆排序（Heap Sort）"></a>7、堆排序（Heap Sort）</h3><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+<h4 id="7-1-算法描述"><a href="#7-1-算法描述" class="headerlink" title="7.1 算法描述"></a>7.1 算法描述</h4><ul>
+<li>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；</li>
+<li>将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；</li>
+<li>由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</li>
+</ul>
+<h4 id="7-2-动图演示"><a href="#7-2-动图演示" class="headerlink" title="7.2 动图演示"></a>7.2 动图演示</h4><p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015231308699-356134237.gif" alt="img"></p>
+<h4 id="7-3-代码实现"><a href="#7-3-代码实现" class="headerlink" title="7.3 代码实现"></a>7.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">varlen;    <span class="comment">// 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildMaxHeap</span>(<span class="params">arr</span>) </span>&#123;   <span class="comment">// 建立大顶堆</span></span><br><span class="line">    len = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(vari = <span class="built_in">Math</span>.floor(len/<span class="number">2</span>); i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        heapify(arr, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapify</span>(<span class="params">arr, i</span>) </span>&#123;     <span class="comment">// 堆调整</span></span><br><span class="line">    varleft = <span class="number">2</span> * i + <span class="number">1</span>,</span><br><span class="line">        right = <span class="number">2</span> * i + <span class="number">2</span>,</span><br><span class="line">        largest = i;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(left &lt; len &amp;&amp; arr[left] &gt; arr[largest]) &#123;</span><br><span class="line">        largest = left;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(right &lt; len &amp;&amp; arr[right] &gt; arr[largest]) &#123;</span><br><span class="line">        largest = right;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(largest != i) &#123;</span><br><span class="line">        swap(arr, i, largest);</span><br><span class="line">        heapify(arr, largest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span>(<span class="params">arr, i, j</span>) </span>&#123;</span><br><span class="line">    vartemp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = temp;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    buildMaxHeap(arr);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(vari = arr.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        swap(arr, <span class="number">0</span>, i);</span><br><span class="line">        len--;</span><br><span class="line">        heapify(arr, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    returnarr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8、计数排序（Counting-Sort）"><a href="#8、计数排序（Counting-Sort）" class="headerlink" title="8、计数排序（Counting Sort）"></a>8、计数排序（Counting Sort）</h3><p>计数排序不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。</p>
+<h4 id="8-1-算法描述"><a href="#8-1-算法描述" class="headerlink" title="8.1 算法描述"></a>8.1 算法描述</h4><ul>
+<li>找出待排序的数组中最大和最小的元素；</li>
+<li>统计数组中每个值为i的元素出现的次数，存入数组C的第i项；</li>
+<li>对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li>
+<li>反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</li>
+</ul>
+<h4 id="8-2-动图演示"><a href="#8-2-动图演示" class="headerlink" title="8.2 动图演示"></a>8.2 动图演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015231740840-6968181.gif" alt="img"></p>
+<h4 id="8-3-代码实现"><a href="#8-3-代码实现" class="headerlink" title="8.3 代码实现"></a>8.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countingSort</span>(<span class="params">arr, maxValue</span>) </span>&#123;</span><br><span class="line">    varbucket = newArray(maxValue + <span class="number">1</span>),</span><br><span class="line">        sortedIndex = <span class="number">0</span>;</span><br><span class="line">        arrLen = arr.length,</span><br><span class="line">        bucketLen = maxValue + <span class="number">1</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(vari = <span class="number">0</span>; i &lt; arrLen; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!bucket[arr[i]]) &#123;</span><br><span class="line">            bucket[arr[i]] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        bucket[arr[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(varj = <span class="number">0</span>; j &lt; bucketLen; j++) &#123;</span><br><span class="line">        <span class="keyword">while</span>(bucket[j] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            arr[sortedIndex++] = j;</span><br><span class="line">            bucket[j]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    returnarr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-算法分析"><a href="#8-4-算法分析" class="headerlink" title="8.4 算法分析"></a>8.4 算法分析</h4><p>计数排序是一个稳定的排序算法。当输入的元素是 n 个 0到 k 之间的整数时，时间复杂度是O(n+k)，空间复杂度也是O(n+k)，其排序速度快于任何比较排序算法。当k不是很大并且序列比较集中时，计数排序是一个很有效的排序算法。</p>
+<h3 id="9、桶排序（Bucket-Sort）"><a href="#9、桶排序（Bucket-Sort）" class="headerlink" title="9、桶排序（Bucket Sort）"></a>9、桶排序（Bucket Sort）</h3><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）。</p>
+<h4 id="9-1-算法描述"><a href="#9-1-算法描述" class="headerlink" title="9.1 算法描述"></a>9.1 算法描述</h4><ul>
+<li>设置一个定量的数组当作空桶；</li>
+<li>遍历输入数据，并且把数据一个一个放到对应的桶里去；</li>
+<li>对每个不是空的桶进行排序；</li>
+<li>从不是空的桶里把排好序的数据拼接起来。 </li>
+</ul>
+<h4 id="9-2-图片演示"><a href="#9-2-图片演示" class="headerlink" title="9.2 图片演示"></a>9.2 图片演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015232107090-1920702011.png" alt="img"></p>
+<h4 id="9-3-代码实现"><a href="#9-3-代码实现" class="headerlink" title="9.3 代码实现"></a>9.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bucketSort</span>(<span class="params">arr, bucketSize</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr.length === <span class="number">0</span>) &#123;</span><br><span class="line">      returnarr;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    vari;</span><br><span class="line">    varminValue = arr[<span class="number">0</span>];</span><br><span class="line">    varmaxValue = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[i] &lt; minValue) &#123;</span><br><span class="line">          minValue = arr[i];                <span class="comment">// 输入数据的最小值</span></span><br><span class="line">      &#125; elseif(arr[i] &gt; maxValue) &#123;</span><br><span class="line">          maxValue = arr[i];                <span class="comment">// 输入数据的最大值</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 桶的初始化</span></span><br><span class="line">    varDEFAULT_BUCKET_SIZE = <span class="number">5</span>;            <span class="comment">// 设置桶的默认数量为5</span></span><br><span class="line">    bucketSize = bucketSize || DEFAULT_BUCKET_SIZE;</span><br><span class="line">    varbucketCount = <span class="built_in">Math</span>.floor((maxValue - minValue) / bucketSize) + <span class="number">1</span>;  </span><br><span class="line">    varbuckets = newArray(bucketCount);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; buckets.length; i++) &#123;</span><br><span class="line">        buckets[i] = [];</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 利用映射函数将数据分配到各个桶中</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        buckets[<span class="built_in">Math</span>.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    arr.length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; buckets.length; i++) &#123;</span><br><span class="line">        insertionSort(buckets[i]);                      <span class="comment">// 对每个桶进行排序，这里使用了插入排序</span></span><br><span class="line">        <span class="keyword">for</span>(varj = <span class="number">0</span>; j &lt; buckets[i].length; j++) &#123;</span><br><span class="line">            arr.push(buckets[i][j]);                     </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    returnarr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-4-算法分析"><a href="#9-4-算法分析" class="headerlink" title="9.4 算法分析"></a>9.4 算法分析</h4><p>桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。 </p>
+<h3 id="10、基数排序（Radix-Sort）"><a href="#10、基数排序（Radix-Sort）" class="headerlink" title="10、基数排序（Radix Sort）"></a>10、基数排序（Radix Sort）</h3><p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。</p>
+<h4 id="10-1-算法描述"><a href="#10-1-算法描述" class="headerlink" title="10.1 算法描述"></a>10.1 算法描述</h4><ul>
+<li>取得数组中的最大数，并取得位数；</li>
+<li>arr为原始数组，从最低位开始取每个位组成radix数组；</li>
+<li>对radix进行计数排序（利用计数排序适用于小范围数的特点）；</li>
+</ul>
+<h4 id="10-2-动图演示"><a href="#10-2-动图演示" class="headerlink" title="10.2 动图演示"></a>10.2 动图演示</h4><p><img src="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/849589-20171015232453668-1397662527.gif" alt="img"> </p>
+<h4 id="10-3-代码实现"><a href="#10-3-代码实现" class="headerlink" title="10.3 代码实现"></a>10.3 代码实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">varcounter = [];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">radixSort</span>(<span class="params">arr, maxDigit</span>) </span>&#123;</span><br><span class="line">    varmod = <span class="number">10</span>;</span><br><span class="line">    vardev = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(vari = <span class="number">0</span>; i &lt; maxDigit; i++, dev *= <span class="number">10</span>, mod *= <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(varj = <span class="number">0</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">            varbucket = <span class="built_in">parseInt</span>((arr[j] % mod) / dev);</span><br><span class="line">            <span class="keyword">if</span>(counter[bucket]==<span class="literal">null</span>) &#123;</span><br><span class="line">                counter[bucket] = [];</span><br><span class="line">            &#125;</span><br><span class="line">            counter[bucket].push(arr[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        varpos = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(varj = <span class="number">0</span>; j &lt; counter.length; j++) &#123;</span><br><span class="line">            varvalue = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span>(counter[j]!=<span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">while</span>((value = counter[j].shift()) != <span class="literal">null</span>) &#123;</span><br><span class="line">                      arr[pos++] = value;</span><br><span class="line">                &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    returnarr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-4-算法分析"><a href="#10-4-算法分析" class="headerlink" title="10.4 算法分析"></a>10.4 算法分析</h4><p>基数排序基于分别排序，分别收集，所以是稳定的。但基数排序的性能比桶排序要略差，每一次关键字的桶分配都需要O(n)的时间复杂度，而且分配之后得到新的关键字序列又需要O(n)的时间复杂度。假如待排数据可以分为d个关键字，则基数排序的时间复杂度将是O(d*2n) ，当然d要远远小于n，因此基本上还是线性级别的。</p>
+<p>基数排序的空间复杂度为O(n+k)，其中k为桶的数量。一般来说n&gt;&gt;k，因此额外空间需要大概n个左右。</p>
+<p>转自<a href="https://www.cnblogs.com/onepixel/articles/7674659.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepixel/articles/7674659.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java多线程三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/">java多线程三</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/" class="archive-article-date">
+  	<time datetime="2020-07-27T03:46:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="8-超卖问题解决"><a href="#8-超卖问题解决" class="headerlink" title="8 超卖问题解决"></a><strong>8</strong> <strong><em>超卖问题解决</em></strong></h1><p>上面那种方案在没有并发情况下是可以的，但秒杀一般是具备大量并发，并发时就有可能出现超卖问题。</p>
+<p><strong>//获取商品详情**</strong> <strong>SeckillGoods seckillGoods = (SeckillGoods) *</strong>redisTemplate<strong><em>.boundHashOps(SeckillGoods.</em></strong>class<strong>*.getSimpleName()).get(seckillid); *</strong>if<strong><em>(goodsId==</em></strong>null<strong>*){   *</strong>throw new<strong>* RuntimeException(*</strong>“已售罄！”***); }</p>
+<p>上面保存订单的方式是先查看Redis中对应商品是否存在，如果存在且数量是否&gt;0如果&gt;0则下单，如果在并发情况下,如果20个人同时在执行如上查询代码这里，而此时对应商品只有一个，则会下20个单，而这20个单一定是有问题的，因为1件商品不可能同时给20个人发货。那么如何解决这种并发问题呢？我们可以用Redis队列实现。</p>
+<p><img src="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/wps24.jpg" alt="img"> </p>
+<h2 id="8-1-数据导入Redis队列操作"><a href="#8-1-数据导入Redis队列操作" class="headerlink" title="8.1 数据导入Redis队列操作"></a>8.1 数据导入Redis队列操作</h2><p>修改pyg-seckill-task中SeckillTask.java</p>
+<p>@Component <strong><em>public class</em></strong> SeckillTask {    <strong>/*****</strong> **   <strong>* 每年双十一启动秒杀**</strong> **   <strong>* 将商品数据全部跟新到索引库**</strong> **   <strong><em>/*</em></strong> **  @Scheduled(cron = <strong>*”30     ?”*</strong>)  <strong>//每天上午10点15分出发一次**</strong> **  <strong><em>public void</em></strong> startSeckill(){     //<strong>……略**</strong> **    List<SeckillGoods> goods = <strong><em>seckillGoodsMapper</em></strong>.selectByExample(example);      <strong>//将商品数据加入到缓存中**</strong> **    <strong><em>for</em></strong> (SeckillGoods good : goods) {       <strong>//秒杀商品信息加入缓存**</strong> **      <strong><em>redisTemplate</em></strong>.boundHashOps(SeckillGoods.<strong><em>class</em></strong>.getSimpleName()).put(good.getId(),good);        <strong>//给每个商品加入到Redis队列中，秒杀对应商品有多少个，则加多少个ID到队列中**</strong> **      pushSeckillGoods(good);     }   }     <strong>/*****</strong> **   <strong>* 给每个商品加入到Redis队列中**</strong> **   <strong>* 秒杀对应商品有多少个，则加多少个ID到队列中**</strong> **   <strong>*** **</strong>@param<strong>* **</strong>goods<strong>***</strong> <strong>*   *</strong>/<strong>** **  *</strong>private void<strong>* pushSeckillGoods(SeckillGoods goods){     <strong>//库存量</strong></strong> **    Integer stockCount = goods.getStockCount();     <strong>//循环加入Redis队列**</strong> **    <strong>//左压栈方式加入**</strong> **    <strong><em>for</em></strong> (<strong><em>int</em></strong> i = 0; i &lt;stockCount ; i++) {       <strong><em>redisTemplate</em></strong>.boundListOps(SysContant.<strong><em>*SECKILL_PREFIX</em></strong>+goods.getId()).leftPush(goods.getId());     }   } }</SeckillGoods></p>
+<p>在pyg_common下创建SysContant.<strong><em>*SECKILL_PREFIX是定义的常量，这里不建议写死。</em></strong></p>
+<p><strong>//秒杀商品前缀**</strong> <strong><em>**public static  final</em></strong> String <strong><em>*SECKILL_PREFIX</em></strong>=<strong>*”SECKILL_PREFIX_GOODSID_”*</strong>;</p>
+<h2 id="8-2-秒杀下单优化"><a href="#8-2-秒杀下单优化" class="headerlink" title="8.2 秒杀下单优化"></a>8.2 秒杀下单优化</h2><p>修改pyg-seckill-service的SeckillOrderServiceImpl.java，加入从队列中取数据校验商品是否存在的实现过程,队列中商品存在，则继续下单，否则抛出异常提示已售罄。</p>
+<p><strong>/*****</strong> ** <strong>* 创建订单**</strong> ** <strong>*** **</strong>@param<strong>* **</strong>seckillid<strong>***</strong> <strong>* ***</strong> <strong><em>*@param</em></strong> <strong><strong>userid***</strong></strong> <strong>* *</strong>/<strong>** **@Override *</strong>public Result<strong>* saveOrder(Long seckillid, String userid) {   <strong>//获取队列中的商品，如果能够获取，则商品存在，可以下单</strong></strong> **  <strong>//这样可以避免多个用户同时抢购意见商品重复下单**</strong> **  Long goodsId = (Long) <strong><em>redisTemplate</em></strong>.boundListOps(SysContant.<strong><em>*SECKILL_PREFIX</em></strong> + seckillid).rightPop();   <strong><em>if</em></strong>(goodsId==<strong><em>null</em></strong>){     <strong><em>return new</em></strong> Result(<strong><em>false</em></strong>, <strong>*”对不起，商品已售罄，请查看其他商品！”*</strong>);   }    <strong>//获取商品详情**</strong> **  SeckillGoods seckillGoods = (SeckillGoods) <strong><em>redisTemplate</em></strong>.boundHashOps(SeckillGoods.<strong><em>class</em></strong>.getSimpleName()).get(seckillid);   <strong>//略….</strong> }</p>
+<h1 id="9-并发问题解决"><a href="#9-并发问题解决" class="headerlink" title="9 并发问题解决"></a><strong>9</strong> <strong><em>并发问题解决</em></strong></h1><p>上面的方案解决了并发情况下下单操作异常问题，但其实际秒杀中大量并发情况下，这个下单过程是需要很长等待时间的，所以这里我们建议用异步和多线程实现，最好不要让程序处于阻塞状态，而是在用户一下单的时候确认用户是否符合下单条件，如果符合，则开启线程执行，执行完毕之后，用户等待查询结果即可。</p>
+<p><img src="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/wps25.jpg" alt="img"> </p>
+<h2 id="9-1-创建线程下订单"><a href="#9-1-创建线程下订单" class="headerlink" title="9.1 创建线程下订单"></a>9.1 创建线程下订单</h2><p>创建CreateOrderThread.java实现订单下单操作,在面试中常常会被问及多线程应用在项目哪里，这正好是一个很好的案例。</p>
+<p>@Component<br><strong><em>public class</em></strong> CreateOrderThread <strong><em>implements</em></strong> Runnable {</p>
+<p>  @Resource<br>  <strong><em>private</em></strong> RedisTemplate <strong><em>redisTemplate</em></strong>;<br>  @Resource<br>  <strong><em>private</em></strong> IdWorker <strong><em>idWorker</em></strong>;<br>  @Resource<br>  <strong><em>private</em></strong> TbSeckillGoodsMapper <strong><em>seckillGoodsMapper</em></strong>;</p>
+<p>  @Override<br>  <strong><em>public void</em></strong> run() {<br>    OrderRecord orderRecord = (OrderRecord) <strong><em>redisTemplate</em></strong>.boundListOps(OrderRecord.<strong><em>class</em></strong>.getSimpleName()).rightPop();<br>    <strong><em>if</em></strong>(<strong><em>null</em></strong> != orderRecord){<br>      Long id = orderRecord.getSeckillid();<br>      String userid = orderRecord.getUserid();<br>      TbSeckillGoods seckillGoods = (TbSeckillGoods) <strong><em>redisTemplate</em></strong>.boundHashOps(TbSeckillGoods.<strong><em>class</em></strong>.getSimpleName()).get(id);<br>      <strong>//3.未售罄，创建订单，以用户id为key存入redis**</strong><br>**      TbSeckillOrder seckillOrder = <strong><em>new</em></strong> TbSeckillOrder();<br>      seckillOrder.setId(<strong><em>idWorker</em></strong>.nextId());<br>      seckillOrder.setSeckillId(id);<br>      seckillOrder.setMoney(seckillGoods.getCostPrice());   <strong>//秒杀价格**</strong><br>**      seckillOrder.setUserId(userid);<br>      seckillOrder.setSellerId(seckillGoods.getSellerId());<br>      seckillOrder.setCreateTime(<strong><em>new</em></strong> Date());<br>      seckillOrder.setStatus(<strong>*”0”*</strong>);</p>
+<p>​      <strong><em>redisTemplate</em></strong>.boundHashOps(TbSeckillOrder.<strong><em>class</em></strong>.getSimpleName()).put(userid, seckillOrder);<br>​      <strong><em>synchronized</em></strong> (CreateOrderThread.<strong><em>class</em></strong>){<br>​        seckillGoods = (TbSeckillGoods) <strong><em>redisTemplate</em></strong>.boundHashOps(TbSeckillGoods.<strong><em>class</em></strong>.getSimpleName()).get(id);<br>​        <strong>//4.更新库存，判断库存是否售罄**</strong><br>**        seckillGoods.setStockCount(seckillGoods.getStockCount() - 1);<br>​        <strong><em>if</em></strong>(seckillGoods.getStockCount() &lt;= 0){<br>​          <strong>//5.售罄，同步秒杀商品数据库（seckillGoods），将秒杀商品从redis中删除**</strong><br>**          <strong><em>seckillGoodsMapper</em></strong>.updateByPrimaryKeySelective(seckillGoods);<br>​          <strong><em>redisTemplate</em></strong>.boundHashOps(TbSeckillGoods.<strong><em>class</em></strong>.getSimpleName()).delete(seckillGoods.getId());<br>​        } <strong><em>else</em></strong> {<br>​          <strong>//6.未售罄，更新redis中秒杀商品库存**</strong><br>**          <strong><em>redisTemplate</em></strong>.boundHashOps(TbSeckillGoods.<strong><em>class</em></strong>.getSimpleName()).put(seckillGoods.getId(), seckillGoods);<br>​        }<br>​      }<br>​    }<br>  }<br>}</p>
+<h2 id="9-2-配置线程池"><a href="#9-2-配置线程池" class="headerlink" title="9.2 配置线程池"></a>9.2 配置线程池</h2><p><strong>&lt;!–**</strong> **  <strong>线程池配置**</strong> <strong><strong>–&gt;</strong></strong> <strong>&lt;*</strong>bean<strong>* *</strong>class<strong>**</strong>=”org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor”<strong>* *</strong>id<strong>**</strong>=”executor”<strong><em>&gt;   *</em><!-- 核心线程数，默认为1-->**</strong> **  &lt;<strong><em>property</em></strong> <strong><em>name***</em></strong>=”corePoolSize”<strong>* *</strong>value<strong>**</strong>=”10”<strong>* /&gt;   <strong><!--最大线程数，默认为Integer.MAX_VALUE--></strong></strong> **  &lt;<strong><em>property</em></strong> <strong><em>name***</em></strong>=”maxPoolSize”<strong>* *</strong>value<strong>**</strong>=”50”<strong>* /&gt;   <strong><!--队列最大长度，一般需要设置值>=notifyScheduledMainExecutor.maxNum；默认为Integer.MAX_VALUE--></strong></strong> **  &lt;<strong><em>property</em></strong> <strong><em>name***</em></strong>=”queueCapacity”<strong>* *</strong>value<strong>**</strong>=”10000”<strong>* /&gt;   <strong><!--线程池维护线程所允许的空闲时间，默认为60s--></strong></strong> **  &lt;<strong><em>property</em></strong> <strong><em>name***</em></strong>=”keepAliveSeconds”<strong>* *</strong>value<strong>**</strong>=”300”<strong>* /&gt;   <strong><!--线程池对拒绝任务（无线程可用）的处理策略，目前只支持AbortPolicy、CallerRunsPolicy；默认为后者--></strong></strong> **  &lt;<strong><em>property</em></strong> <strong><em>name***</em></strong>=”rejectedExecutionHandler”<strong><em>&gt;     &lt;</em></strong>bean<strong>* *</strong>class<strong>**</strong>=”java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy”<strong>* /&gt;   &lt;/*</strong>property<strong><em>&gt; &lt;/</em></strong>bean***&gt;</p>
+<p>线程池对拒绝任务的处理策略：</p>
+<p>CallerRunsPolicy ：</p>
+<p>这个策略重试添加当前的任务，他会自动重复调用 execute() 方法，直到成功。 </p>
+<p>AbortPolicy ：</p>
+<p>对拒绝任务抛弃处理，并且抛出异常。</p>
+<p>DiscardPolicy ：</p>
+<p>对拒绝任务直接无声抛弃，没有异常信息。</p>
+<p>DiscardOldestPolicy ：</p>
+<p>对拒绝任务不抛弃，而是抛弃队列里面等待最久的一个线程，然后把拒绝任务加到队列。</p>
+<h2 id="9-3-下单保存修改"><a href="#9-3-下单保存修改" class="headerlink" title="9.3 下单保存修改"></a>9.3 下单保存修改</h2><p>修改SeckillOrderServiceImpl.java，把之前实现的保存订单修改成启动线程调用</p>
+<p>@Resource <strong><em>private</em></strong> RedisTemplate <strong><em>redisTemplate</em></strong>;  @Resource <strong><em>private</em></strong> ThreadPoolTaskExecutor <strong><em>executor</em></strong>;  @Resource <strong><em>private</em></strong> CreateOrderThread <strong><em>createOrderThread</em></strong>; @Override   <strong><em>public void</em></strong> saveOrder(Long id, String userid) {     <strong>//1.判断用户是否在排队队列**</strong> **    Boolean isMember = <strong><em>redisTemplate</em></strong>.boundSetOps(SysConsts.<strong><em>*SECKILL_USER</em></strong>+id).isMember(userid);     <strong><em>if</em></strong>(isMember){       TbSeckillOrder seckillOrder = (TbSeckillOrder) <strong><em>redisTemplate</em></strong>.boundHashOps(TbSeckillOrder.<strong><em>class</em></strong>.getSimpleName()).get(userid);       <strong>//1.1在排队，判断用户是否在订单队列中**</strong> **      <strong><em>if</em></strong>(<strong><em>null</em></strong> != seckillOrder){         <strong>//1.1.1在订单队列，“您已抢购成功，请支付订单！”异常**</strong> **        <strong><em>return new</em></strong> Result(<strong><em>false</em></strong>, <strong>*”您已抢购成功，请支付订单！”*</strong>);       }       <strong>//1.1.2不在订单队列，“您正在排队…”**</strong> **      <strong><em>return new</em></strong> Result(<strong><em>false</em></strong>, <strong>*”您正在排队，请耐心等待。。。”*</strong>);     }     <strong>//2.判断商品是否售罄**</strong> **    Long goodsId = (Long) <strong><em>redisTemplate</em></strong>.boundListOps(SysConsts.<strong><em>*SECKILL_PREFIX</em></strong>+id).rightPop();     <strong><em>if</em></strong>(<strong><em>null</em></strong> == goodsId ){       <strong>//2.售罄**</strong> **      <strong><em>return new</em></strong> Result(<strong><em>false</em></strong>, <strong>*”对不起，商品已售罄，请查看其他商品！”*</strong>);     }   <strong><em>redisTemplate</em></strong>.boundSetOps(SysConsts.<strong><em>*SECKILL_USER</em></strong>+id).add(userid);    <strong><em>redisTemplate</em></strong>.boundListOps(OrderRecord.<strong><em>class</em></strong>.getSimpleName()).leftPush(<strong><em>new</em></strong> OrderRecord(userid, id));    <strong><em>executor</em></strong>.execute(<strong><em>createOrderThread</em></strong>);<strong><em>return new</em></strong> Result(<strong><em>true</em></strong>, <strong>*”秒杀成功，请您尽快支付！”*</strong>); } </p>
+<h2 id="9-4-添加静态常量"><a href="#9-4-添加静态常量" class="headerlink" title="9.4 添加静态常量"></a>9.4 添加静态常量</h2><p><strong><em>public static final</em></strong> String <strong><em>*SECKILL_USER</em></strong> = <strong>*”SECKILL_USER_”*</strong>;<strong>//保存用户id**</strong><br>**</p>
+<h2 id="9-5-创建OrderRecord类"><a href="#9-5-创建OrderRecord类" class="headerlink" title="9.5 创建OrderRecord类"></a>9.5 创建OrderRecord类</h2><p><strong><em>package</em></strong> com.pinyougou.vo;</p>
+<p><strong><em>import</em></strong> java.io.Serializable;</p>
+<p><strong>/****</strong><br>** <strong>* 记录下单用户id和商品id**</strong><br>** <strong><em>/*</em></strong><br><strong><em>**public class</em></strong> OrderRecord <strong><em>implements</em></strong> Serializable{</p>
+<p>  <strong><em>private</em></strong> String <strong><em>userId</em></strong>;</p>
+<p>  <strong><em>private</em></strong> Long <strong><em>id</em></strong>;</p>
+<p>  <strong><em>public</em></strong> OrderRecord(String userId, Long id) {<br>    <strong><em>this</em></strong>.<strong><em>userId</em></strong> = userId;<br>    <strong><em>this</em></strong>.<strong><em>id</em></strong> = id;<br>  }</p>
+<p>  <strong><em>public</em></strong> String getUserId() {<br>    <strong><em>return</em></strong> <strong><em>userId</em></strong>;<br>  }</p>
+<p>  <strong><em>public void</em></strong> setUserId(String userId) {<br>    <strong><em>this</em></strong>.<strong><em>userId</em></strong> = userId;<br>  }</p>
+<p>  <strong><em>public</em></strong> Long getId() {<br>    <strong><em>return</em></strong> <strong><em>id</em></strong>;<br>  }</p>
+<p>  <strong><em>public void</em></strong> setId(Long id) {<br>    <strong><em>this</em></strong>.<strong><em>id</em></strong> = id;<br>  }<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java多线程二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%8C/">java多线程二</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%8C/" class="archive-article-date">
+  	<time datetime="2020-07-27T03:45:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-课程目标"><a href="#1-课程目标" class="headerlink" title="1. 课程目标"></a><strong>1.</strong> <strong><em>课程目标</em></strong></h1><p>l Java内存模型</p>
+<p>l 线程特性</p>
+<p>l 多线程控制</p>
+<p>l 容器</p>
+<p>l 线程池</p>
+        
+          <a class="article-more-a" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%8C/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java多线程一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%80/">java多线程一</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%80/" class="archive-article-date">
+  	<time datetime="2020-07-27T03:30:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-总体安排"><a href="#1-总体安排" class="headerlink" title="1. 总体安排"></a><strong>1.</strong> <strong><em>总体安排</em></strong></h1><p>Day01：多线程基础篇</p>
+<p>Day02：多线程高级篇</p>
+<p>Day03：多线程实际应用（秒杀实现）</p>
+        
+          <a class="article-more-a" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%80/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-EasyExcel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -619,314 +1088,6 @@
 
 
   
-    <article id="post-mysql调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/mysql%E8%B0%83%E4%BC%98/">mysql调优</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/mysql%E8%B0%83%E4%BC%98/" class="archive-article-date">
-  	<time datetime="2020-06-18T05:49:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/2020/06/18/mysql%E8%B0%83%E4%BC%98/image-20200618134959347.png" alt="image-20200618134959347"></p>
-<h3 id="极端二叉树："><a href="#极端二叉树：" class="headerlink" title="极端二叉树："></a>极端二叉树：</h3><p><img src="/2020/06/18/mysql%E8%B0%83%E4%BC%98/image-20200618135051084.png" alt="image-20200618135051084"></p>
-<p>当数据出现<strong>单边增长</strong>，在这种情况下，二叉树与数组和链表差不多，查询的时间没有多少的减少，并不合适用于用作索引的数据结构。</p>
-        
-          <a class="article-more-a" href="/2020/06/18/mysql%E8%B0%83%E4%BC%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/mysql%E8%B0%83%E4%BC%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringTask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/SpringTask/">SpringTask</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/SpringTask/" class="archive-article-date">
-  	<time datetime="2020-06-17T16:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h2><p>在企业级应用中，经常会制定一些“计划任务”，即在某个时间点做某件事情，核心是以时间为关注点，即在一个特定的时间点，系统执行指定的一个操作。常见的任务调度框架有Quartz和SpringTask等。</p>
-        
-          <a class="article-more-a" href="/2020/06/18/SpringTask/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">品优购</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/SpringTask/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-微信扫码支付" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E6%94%AF%E4%BB%98/">微信扫码支付</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E6%94%AF%E4%BB%98/" class="archive-article-date">
-  	<time datetime="2020-06-17T13:34:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>​        二维码又称QR Code，QR全称Quick Response，是一个近几年来移动设备上超流行的一种编码方式，它比传统的Bar Code条形码能存更多的信息，也能表示更多的数据类型。</p>
-<p>​        二维条码/二维码（2-dimensional bar code）是用某种特定的几何图形按一定规律在平面（二维方向上）分布的黑白相间的图形记录数据符号信息的；在代码编制上巧妙地利用构成计算机内部逻辑基础的“0”、“1”比特流的概念，使用若干个与二进制相对应的几何形体来表示文字数值信息，通过图象输入设备或光电扫描设备自动识读以实现信息自动处理：它具有条码技术的一些共性：每种码制有其特定的字符集；每个字符占有一定的宽度；具有一定的校验功能等。同时还具有对不同行的信息自动识别功能、及处理图形旋转变化点。</p>
-        
-          <a class="article-more-a" href="/2020/06/17/%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E6%94%AF%E4%BB%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">品优购</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E6%94%AF%E4%BB%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/cas/">cas</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/cas/" class="archive-article-date">
-  	<time datetime="2020-06-17T04:40:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是单点登录"><a href="#什么是单点登录" class="headerlink" title="什么是单点登录"></a>什么是单点登录</h2><p><a href="http://baike.baidu.com/item/单点登录" target="_blank" rel="noopener">        单点登录</a>（Single Sign On），简称为 SSO，是目前比较流行的企业业务整合的解决方案之一。SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。</p>
-<p>我们目前的系统存在诸多子系统，而这些子系统是分别部署在不同的服务器中，那么使用传统方式的session是无法解决的，我们需要使用相关的单点登录技术来解决。</p>
-        
-          <a class="article-more-a" href="/2020/06/17/cas/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">品优购</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/cas/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1024,11 +1185,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">品优购</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">品优购</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1041,6 +1202,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">swagger</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
